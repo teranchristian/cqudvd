@@ -5,8 +5,7 @@
     <div class=" container well">
         <div class="row">
             <div class="offset3 span6 offset3">
-                <div class="headtitle">Logon
-                as</div>
+                <div class="headtitle">Logon</div>
             </div>
         </div>
     </div>

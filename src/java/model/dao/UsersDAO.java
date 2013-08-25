@@ -15,7 +15,6 @@ import model.entities.Users;
  */
 public interface UsersDAO {
     public boolean add(Users user);
-    public ArrayList<Users>listar();
     public boolean getUserEmail (String email);
     public String getUserKey (String email);
     public Object[] validation (String email,String password);

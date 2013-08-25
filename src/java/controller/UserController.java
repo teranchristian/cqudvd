@@ -43,90 +43,14 @@ public class UserController implements SessionAware {
     public UserController() {
         userDAO = new UsersDaoImpl();
     }
-
+    
+    //Start getters and setters
     public String getActivationId() {
         return activationId;
     }
 
     public void setActivationId(String activationId) {
         this.activationId = activationId;
-    }
-
-    //return the attributes from  the FORM (JSP)
-    public String addUser() {
-        login.setUserKey(UUID.randomUUID().toString());
-        login.setPassword(encryption(login.getPassword(), login.getUserKey()));
-        user.setLogin(login);
-        if (userDAO.getUserEmail(login.getEmail()) == false) {
-            if (userDAO.add(user)) {
-
-                Session s;
-                MimeMessage message;
-                Transport transport;
-                Properties prop;
-                String emailAdd = login.getEmail();
-                try {
-                    prop = System.getProperties();
-                    prop.put("mail.smtp.host", "smtp.mail.yahoo.com");
-                    s = Session.getDefaultInstance(prop, null);
-                    message = new MimeMessage(s);
-                    transport = s.getTransport("smtp");
-                    transport.connect("smtp.mail.yahoo.com.au", 587, "Cqudvd@yahoo.com.au", "Cqudvd12345");
-                    message.setFrom(new InternetAddress("Cqudvd@yahoo.com.au"));
-                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailAdd));
-                    message.setSubject("Registration Confirmation");
-                    message.setText("Hi " + user.getFirstName() + "\nPlease Confirm your registration by clicking the link below:\n " + "http://localhost:8084/cqu/activate?activationId=" + user.getUserId());
-                    transport.sendMessage(message, message.getAllRecipients());
-                    transport.close();
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-
-                user = new Users();
-                login = new Login();
-                msg = "Thank you for registering\n Please check your email to activate your account";
-
-
-            } else {
-                msg = "Somethings goes worng, please try it again";
-            }
-        } else {
-            msg = "Someone already has the email address '" + login.getEmail() + "', please try again";
-        }
-        return "success";
-    }
-
-    public String validate() {
-        String userKey = userDAO.getUserKey(login.getEmail());
-        if (userKey.equals("")) {
-            msg = "User does not exits";
-        } else {
-            login.setPassword(encryption(login.getPassword(), userKey));
-            Object[] u = userDAO.validation(login.getEmail(), login.getPassword());
-            if (u == null) {
-                msg = "user/password error";
-            } else {
-                if (u[4].toString().equals("P")) {
-                    msg = "Your account has not yet been activated,\n Please check your email to activate your account";
-                } else {
-
-                    session.put("userId", u[0].toString());
-                    session.put("userDescr", u[1].toString());
-                    session.put("userEmail", u[2].toString());
-                    if (u[3].toString().equals("USER")) {
-                        return "welcome";
-                    } else {
-                        return "admin";
-                    }
-                }
-            }
-        }
-        return "success";
-    }
-
-    public String logout() {
-        session.clear();
-        return "success";
     }
 
     public Login getLogin() {
@@ -148,7 +72,93 @@ public class UserController implements SessionAware {
     public void setUser(Users user) {
         this.user = user;
     }
+   //END getters and setters
 
+    //return the attributes from  the FORM (JSP)
+    public String addUser() {
+        login.setUserKey(UUID.randomUUID().toString());
+        login.setPassword(encryption(login.getPassword(), login.getUserKey()));
+        user.setLogin(login);
+        if (userDAO.getUserEmail(login.getEmail()) == false) {
+            if (userDAO.add(user)) {
+                Session s;
+                MimeMessage message;
+                Transport transport;
+                Properties prop;
+                String emailAdd = login.getEmail();
+                try {
+                    prop = System.getProperties();
+                    prop.put("mail.smtp.host", "smtp.mail.yahoo.com");
+                    s = Session.getDefaultInstance(prop, null);
+                    message = new MimeMessage(s);
+                    transport = s.getTransport("smtp");
+                    transport.connect("smtp.mail.yahoo.com.au", 587, "Cqudvd@yahoo.com.au", "Cqudvd12345");
+                    message.setFrom(new InternetAddress("Cqudvd@yahoo.com.au"));
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailAdd));
+                    message.setSubject("Registration Confirmation");
+                    message.setText("Hi " + user.getFirstName() + "\nPlease Confirm your registration by clicking the link below:\n " + "http://localhost:8084/cqu/activate?activationId=" + user.getUserId());
+                    transport.sendMessage(message, message.getAllRecipients());
+                    transport.close();
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+                //clean beans
+                user = new Users();
+                login = new Login();
+                msg = "Thank you for registering\n Please check your email to activate your account";
+            } else {
+                msg = "Somethings goes worng, please try it again";
+            }
+        } else {
+            msg = "Someone already has the email address '" + login.getEmail() + "', please try again";
+        }
+        return "success";
+    }
+    
+    public String updateUser(){        
+        user.setUserId(Integer.parseInt(session.get("userId").toString()));
+        if ( userDAO.updateDetail(user)) {
+            session.put("userDescr", user.getLastName()+", "+ user.getFirstName());
+        }else {
+             msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+    }
+
+    public String validate() {
+        String userKey = userDAO.getUserKey(login.getEmail());
+        if (userKey.equals("")) {
+            msg = "User does not exits";
+        } else {
+            login.setPassword(encryption(login.getPassword(), userKey));
+            Object[] u = userDAO.validation(login.getEmail(), login.getPassword());
+            if (u == null) {
+                msg = "user/password error";
+            } else {
+                if (u[4].toString().equals("P")) {
+                    msg = "Your account has not yet been activated,\n Please check your email to activate your account";
+                } else {
+                    session.put("userId", u[0].toString());
+                    session.put("userDescr", u[1].toString());
+                    session.put("userEmail", u[2].toString());
+                    session.put("userRole", u[3].toString());
+                    if (u[3].toString().equals("USER")) {
+                        return "welcome";
+                    } else {
+                        return "admin";
+                    }
+                }
+            }
+        }
+        return "success";
+    }
+
+    public String logout() {
+        session.clear();
+        return "success";
+    }
+
+    
     public String encryption(String unecryptedPassword, String userKey) {
         MessageDigest messageDigest = null;
         try {
@@ -174,21 +184,12 @@ public class UserController implements SessionAware {
         userDAO.activate(activationId);
         msg = "Your Account has been activated";
         return "success";
-    }
-    
+    }    
     
     public String userDetail(){
         String id = session.get("userId").toString();
         user = userDAO.usersDetail(id);
        // String fName=uDetail.getFirstName();
         return "userDetail";
-    }
-    
-    public String updateUser(){
-        
-        user.setUserId(Integer.parseInt(session.get("userId").toString()));
-        userDAO.updateDetail(user);
-        return "success";
-    }
-    
+    }   
 }
