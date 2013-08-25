@@ -35,7 +35,7 @@ public class UsersDaoImpl implements UsersDAO {
         }
     }
 
-   @Override
+    @Override
     public boolean getUserEmail(String email) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();

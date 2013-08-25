@@ -10,7 +10,6 @@
                 "user.lastName": {
                     required: true
                 },
-               
             },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
@@ -40,7 +39,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form name="form" id="form" action="updateUser" method="post" theme="simple" >
+        <s:form name="form" id="form" action="user/updateUser" method="post" theme="simple" >
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
@@ -91,7 +90,7 @@
                         </div>
                     </td>	
                 </tr>	
-                	
+
 
                 <tr>
                     <td colspan="2">

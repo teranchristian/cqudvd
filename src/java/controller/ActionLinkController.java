@@ -13,13 +13,12 @@ public class ActionLinkController {
     public String welcome() {
         return "welcome";
     }
+
     public String login() {
         return "login";
     }
+
     public String signUp() {
         return "signUp";
     }
-    
-    
-    
 }

@@ -6,7 +6,7 @@
 <br/>
 <div class="container" style="background: #36363b!important;">
     <div id="myCarousel" class="carousel slide">
-         Carousel items 
+        Carousel items 
         <div class="carousel-inner">
             <div class="active item">
                 <img src="public/img/banner1.jpg" />
@@ -18,7 +18,7 @@
                 <img src="public/img/banner3.jpg" />
             </div>
         </div>
-         Carousel nav 
+        Carousel nav 
         <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>

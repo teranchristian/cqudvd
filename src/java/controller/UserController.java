@@ -43,7 +43,7 @@ public class UserController implements SessionAware {
     public UserController() {
         userDAO = new UsersDaoImpl();
     }
-    
+
     //Start getters and setters
     public String getActivationId() {
         return activationId;
@@ -72,7 +72,7 @@ public class UserController implements SessionAware {
     public void setUser(Users user) {
         this.user = user;
     }
-   //END getters and setters
+    //END getters and setters
 
     //return the attributes from  the FORM (JSP)
     public String addUser() {
@@ -114,13 +114,13 @@ public class UserController implements SessionAware {
         }
         return "success";
     }
-    
-    public String updateUser(){        
+
+    public String updateUser() {
         user.setUserId(Integer.parseInt(session.get("userId").toString()));
-        if ( userDAO.updateDetail(user)) {
-            session.put("userDescr", user.getLastName()+", "+ user.getFirstName());
-        }else {
-             msg = "Somethings goes worng, please try it again";
+        if (userDAO.updateDetail(user)) {
+            session.put("userDescr", user.getLastName() + ", " + user.getFirstName());
+        } else {
+            msg = "Somethings goes worng, please try it again";
         }
         return "success";
     }
@@ -150,7 +150,7 @@ public class UserController implements SessionAware {
                 }
             }
         }
-        return "success";
+        return "error";
     }
 
     public String logout() {
@@ -158,7 +158,6 @@ public class UserController implements SessionAware {
         return "success";
     }
 
-    
     public String encryption(String unecryptedPassword, String userKey) {
         MessageDigest messageDigest = null;
         try {
@@ -184,12 +183,12 @@ public class UserController implements SessionAware {
         userDAO.activate(activationId);
         msg = "Your Account has been activated";
         return "success";
-    }    
-    
-    public String userDetail(){
+    }
+
+    public String userDetail() {
         String id = session.get("userId").toString();
         user = userDAO.usersDetail(id);
-       // String fName=uDetail.getFirstName();
+        // String fName=uDetail.getFirstName();
         return "userDetail";
-    }   
+    }
 }

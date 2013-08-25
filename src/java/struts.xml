@@ -8,6 +8,10 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
 
+        <global-results>
+           <result name="welcome" type="tiles">welcome</result>
+        </global-results>
+        
         <action name="addUser" class="controller.UserController" method="addUser" >
             <result name="success" type="tiles">add</result>
         </action>
@@ -17,19 +21,31 @@
         </action>
         
         <action name="validate" class="controller.UserController" method="validate" >
-            <result name="success" type="tiles">login</result>
-            <result name="welcome" type="tiles">welcome</result>            
+            <result name="error" type="tiles">login</result> 
             <result name="admin" type="tiles">admin</result>    
         </action>
         <action name="logout" class="controller.UserController" method="logout" >
             <result name="success" type="tiles">welcome</result>   
         </action>
         
-        <action name="*" method="{1}" class="controller.ActionLinkController">
-            <result name="welcome" type="tiles">welcome</result>
+        <action name="*" method="{1}" class="controller.ActionLinkController">            
             <result name="login" type="tiles">login</result>
             <result name="signUp" type="tiles">signUp</result>
-        </action>
+        </action>                
+    </package>
+    
+    <package name="default1"  namespace="/user" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        
+           <interceptors>
+            <interceptor class="controller.UserInterceptor" name="UserInterceptor"/>                
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="UserInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>     
         
         <action name="userDetail" class="controller.UserController" method="userDetail" >
             <result name="userDetail" type="tiles">userDetail</result>
@@ -38,6 +54,5 @@
         <action name="updateUser" class="controller.UserController" method="updateUser" >
             <result name="success" type="tiles">welcome</result>
         </action>
-        
     </package>
 </struts>

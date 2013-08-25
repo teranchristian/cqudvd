@@ -2,19 +2,19 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 17/08/2013 10:51:41 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class name="model.entities.Login" schema="CQU" table="LOGIN">
-    <id name="loginId" type="int">
-      <column name="LOGIN_ID"/>
-      <generator class="identity"/>
-    </id>
-    <property name="email" type="string">
-      <column length="120" name="EMAIL"/>
-    </property>
-    <property name="password" type="string">
-      <column length="60" name="PASSWORD"/>
-    </property>
-    <property name="userKey" type="string">
-      <column length="60" name="USER_KEY"/>
-    </property>
-  </class>
+    <class name="model.entities.Login" schema="CQU" table="LOGIN">
+        <id name="loginId" type="int">
+            <column name="LOGIN_ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="email" type="string">
+            <column length="120" name="EMAIL"/>
+        </property>
+        <property name="password" type="string">
+            <column length="60" name="PASSWORD"/>
+        </property>
+        <property name="userKey" type="string">
+            <column length="60" name="USER_KEY"/>
+        </property>
+    </class>
 </hibernate-mapping>

@@ -14,9 +14,9 @@
             <tr>
                 <td align="center"  >
                     <s:label value="%{msg}" ></s:label>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                </tr>
+            </table>
         <s:form action="validate" method="post" >
             <table  class=""  nowrap align="center" border="0" cellpadding="3" cellspacing="3"  width="25%">       
                 <tr>

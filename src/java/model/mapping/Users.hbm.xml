@@ -2,31 +2,31 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 17/08/2013 10:51:41 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class name="model.entities.Users" schema="CQU" table="USERS">
-    <id name="userId" type="int">
-      <column name="USER_ID"/>
-      <generator class="identity"/>
-    </id>
-    <property name="firstName" type="string">
-      <column length="120" name="FIRST_NAME"/>
-    </property>
-    <property name="lastName" type="string">
-      <column length="120" name="LAST_NAME"/>
-    </property>
-    <property name="phoneNumber" type="string">
-      <column length="12" name="PHONE_NUMBER"/>
-    </property>
-    <property name="address" type="string">
-      <column length="120" name="ADDRESS"/>
-    </property>
-    <property name="active" type="string" insert="false">
-      <column length="1" name="ACTIVE"/>
-    </property>
+    <class name="model.entities.Users" schema="CQU" table="USERS">
+        <id name="userId" type="int">
+            <column name="USER_ID"/>
+            <generator class="identity"/>
+        </id>
+        <property name="firstName" type="string">
+            <column length="120" name="FIRST_NAME"/>
+        </property>
+        <property name="lastName" type="string">
+            <column length="120" name="LAST_NAME"/>
+        </property>
+        <property name="phoneNumber" type="string">
+            <column length="12" name="PHONE_NUMBER"/>
+        </property>
+        <property name="address" type="string">
+            <column length="120" name="ADDRESS"/>
+        </property>
+        <property name="active" type="string" insert="false">
+            <column length="1" name="ACTIVE"/>
+        </property>
     
-    <many-to-one name="login" class="model.entities.Login" column="LOGIN_ID" cascade="all" unique="true"  />
-    <many-to-one name="role" class="model.entities.Roles" column="ROLE_ID" cascade="all" unique="true" insert="false" update="false" />
+        <many-to-one name="login" class="model.entities.Login" column="LOGIN_ID" cascade="all" unique="true"  />
+        <many-to-one name="role" class="model.entities.Roles" column="ROLE_ID" cascade="all" unique="true" insert="false" update="false" />
     
-  </class>
+    </class>
 </hibernate-mapping>
 
  

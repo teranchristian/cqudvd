@@ -124,10 +124,10 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                        <label for="rpassword" class="control-label lblinput">Confirm password :</label>            
-                        <div class="controls pull-right">
-                            <input  type="password"  name="rpassword" id="rpassword"  maxlength="50" size="25"/>
-                        </div>
+                            <label for="rpassword" class="control-label lblinput">Confirm password :</label>            
+                            <div class="controls pull-right">
+                                <input  type="password"  name="rpassword" id="rpassword"  maxlength="50" size="25"/>
+                            </div>
                         </div>
                     </td>	
                 </tr>	
