@@ -7,7 +7,7 @@
                 <div class="span12 ">
                     <div class="menuLogo ">
                         <center>
-                            <img  src="public/img/logo.png"/>
+                            <img  src="${pageContext.request.contextPath}/public/img/logo.png"/>
                         </center>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="span12 ">
                     <div class="menuOption" style="">
                         <ul id="nav">
-                            <li><a href="#">Gender</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/genre">Genres</a></li>
                             <li><a href="#">Movies</a></li>
                             <li><a href="#">Reports</a></li>
                         </ul>

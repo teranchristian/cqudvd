@@ -8,7 +8,7 @@
                 <div class="span12 ">
                     <div class="menuLogo ">
                         <center>
-                            <img  src="public/img/logo.png"/>
+                            <img  src="${pageContext.request.contextPath}/public/img/logo.png"/>
                         </center>
                     </div>
                 </div>

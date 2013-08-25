@@ -230,6 +230,16 @@ label.error {
     background			:	steelblue ;
 }
 
+.headblocktitle
+{
+    font-family			:	arial	;
+    font-size			:	19px	;
+    color			:	#3D3D3D	;
+    background			:	#FEF8CC !important;
+    font-weight			:	bold ;
+    text-align                  :       center;
+    padding:   5px 0px 5px 0px;
+}
 /*end formbackground:url('../../public/images/editicon.gif');*/
 .iconEdit{
 

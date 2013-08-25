@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
-        <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-        <property name="hibernate.connection.url">jdbc:derby://localhost:1527/CQU</property>
-        <property name="hibernate.connection.username">cqu</property>
-        <property name="hibernate.connection.password">cqu</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">false</property>
-        <mapping resource="model/mapping/Users.hbm.xml"/>
-        <mapping resource="model/mapping/Roles.hbm.xml"/>
-        <mapping resource="model/mapping/Login.hbm.xml"/>
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/CQU</property>
+    <property name="hibernate.connection.username">cqu</property>
+    <property name="hibernate.connection.password">cqu</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">false</property>
+    <mapping resource="model/mapping/Users.hbm.xml"/>
+    <mapping resource="model/mapping/Roles.hbm.xml"/>
+    <mapping resource="model/mapping/Login.hbm.xml"/>
+    <mapping resource="model/mapping/Genres.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>

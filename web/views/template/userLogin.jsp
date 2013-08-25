@@ -17,7 +17,7 @@
                                         <span class="icon-align-justify"></span>
                                     </button>
                                     <ul class="dropdown-menu ">
-                                        <li><a href="<s:url action="user/userDetail"/>">Change your detail</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/userDetail">Change your detail</a></li>
                                         <li><a href="">Change your password</a></li>
                                     </ul>
                                 </div>
@@ -25,7 +25,7 @@
                             </s:else>
                     </div>
                     <div class="span6">
-                        <h3 class="currentUser pull-right">Follow us <img src="public/img/facebook.png"/>&nbsp;&nbsp;<img src="public/img/twitter.png"/>&nbsp;&nbsp;<img  src="public/img/google.png"/> </h3> 
+                        <h3 class="currentUser pull-right">Follow us <img src="${pageContext.request.contextPath}/public/img/facebook.png"/>&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/public/img/twitter.png"/>&nbsp;&nbsp;<img  src="${pageContext.request.contextPath}/public/img/google.png"/> </h3> 
                     </div>
                 </div>
             </div>

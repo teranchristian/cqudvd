@@ -34,7 +34,6 @@ public class UserController implements SessionAware {
     Users user = new Users();
     Login login = new Login();
     Roles role = new Roles();
-    ArrayList<Users> listaClientes = new ArrayList();
     UsersDAO userDAO;
     String msg;
     String activationId;

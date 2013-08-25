@@ -9,7 +9,7 @@
         </result-types>
 
         <global-results>
-           <result name="welcome" type="tiles">welcome</result>
+            <result name="welcome" type="tiles">welcome</result>
         </global-results>
         
         <action name="addUser" class="controller.UserController" method="addUser" >
@@ -39,7 +39,7 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
         
-           <interceptors>
+        <interceptors>
             <interceptor class="controller.UserInterceptor" name="UserInterceptor"/>                
             <interceptor-stack name="loginStack">
                 <interceptor-ref name="UserInterceptor"/>
@@ -53,6 +53,16 @@
         
         <action name="updateUser" class="controller.UserController" method="updateUser" >
             <result name="success" type="tiles">welcome</result>
+        </action>
+    </package>
+    
+    <package name="default2"  namespace="/admin" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>        
+                   
+        <action name="genre" class="controller.GenreController" method="genreList" >
+            <result name="success" type="tiles">genreList</result>
         </action>
     </package>
 </struts>

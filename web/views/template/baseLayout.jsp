@@ -8,16 +8,17 @@
         <title>
             <tiles:insertAttribute name="title" ignore="true" />
         </title>
-        <script type="text/javascript" src="http://sydneyapps.cloudservices.asia/andromeda/public/js/jquery.js"></script>
-        <link type="text/css" href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <link type="text/css" href="public/css/style.css"  rel="stylesheet"/>    
-        <script type="text/javascript" language="javascript" src="public/js/validate.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.js"></script>
+        <link type="text/css" href="${pageContext.request.contextPath}/public/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link type="text/css" href="${pageContext.request.contextPath}/public/css/style.css"  rel="stylesheet"/>    
+        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/validate.js"></script>
+        <link href="${pageContext.request.contextPath}/css/style_inner.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <tiles:insertAttribute name="userLogin" />
         <tiles:insertAttribute name="menu" />
         <tiles:insertAttribute name="body" />
         <tiles:insertAttribute name="footer" />
-        <script type="text/javascript" src="public/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/public/bootstrap/js/bootstrap.js"></script>
     </body>
 </html>

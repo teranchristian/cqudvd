@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2013 8:05:55 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="model.entities.Genres" schema="CQU" table="GENRES">
+    <id name="genreId" type="int">
+      <column name="GENRE_ID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="genre" type="string">
+      <column length="80" name="GENRE" not-null="true" unique="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
