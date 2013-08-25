@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    
+  <!-- START BASE LAYOUT  -->
+  <definition name="baseLayout" template="/views/template/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="userLogin" value="/views/template/userLogin.jsp"/>
+      <put-attribute name="menu" value="/views/template/menu.jsp"/>
+      <put-attribute name="body"   value="body.jsp"/>
+      <put-attribute name="footer" value="/views/template/footer.jsp"/>
+  </definition>
+  <!-- END BASE LAYOUT  -->
+  
+  <!-- START INDEX PAGE  -->
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/welcome.jsp"/>      
+  </definition>
+  <!-- END INDEX PAGE  -->
+  
+  <!-- START SIGN UP PAGE  -->
+  <definition name="signUp" extends="baseLayout">
+      <put-attribute name="title"  value="Sign Up"/>
+      <put-attribute name="body"  value="/views/user/sign-up.jsp"/>          
+  </definition>
+  
+  <definition name="add" extends="baseLayout">
+      <put-attribute name="title"  value="Sign Up"/>
+      <put-attribute name="body"   value="/views/user/sign-up.jsp"/>      
+  </definition>
+  <!-- END SIGN UP PAGE  -->
+  
+  <definition name="admin" extends="baseLayout">
+      <put-attribute name="title"  value="Administrator"/>
+      <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/views/admin/welcome.jsp"/>          
+  </definition>
+    
+  <definition name="login" extends="baseLayout">
+      <put-attribute name="title"  value="Login"/>
+      <put-attribute name="body"   value="/login.jsp"/>      
+  </definition>
+  
+  <definition name="userDetail" extends="baseLayout">
+      <put-attribute name="title"  value="Update Detail"/>
+      <put-attribute name="body"   value="/views/user/userDetail.jsp"/>      
+  </definition>
+    
+</tiles-definitions>
