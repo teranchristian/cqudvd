@@ -69,7 +69,7 @@ public class UsersDaoImpl implements UsersDAO {
     public void activate(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
-        Query update = session.createQuery("update Users u set u.active = 'A'" + " where u.userId =" + id);
+        Query update = session.createQuery("update Users u set u.active = 'T'" + " where u.userId =" + id);
         update.executeUpdate();
         transaction.commit();
     }

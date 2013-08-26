@@ -20,7 +20,7 @@
                             ID
                         </th>
                         <th class="mainlistheading" align="left" valign="center">
-                            Genre
+                            GENRE
                         </th>		
                         <th class="mainlistheading" style="width: 5%">
                             EDIT

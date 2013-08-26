@@ -10,5 +10,8 @@
     <property name="genre" type="string">
       <column length="80" name="GENRE" not-null="true" unique="true"/>
     </property>
+    <property name="active" type="string" insert="false">
+        <column length="1" name="ACTIVE"/>
+    </property>
   </class>
 </hibernate-mapping>

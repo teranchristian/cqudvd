@@ -21,8 +21,7 @@
         </property>
         <property name="active" type="string" insert="false">
             <column length="1" name="ACTIVE"/>
-        </property>
-    
+        </property>    
         <many-to-one name="login" class="model.entities.Login" column="LOGIN_ID" cascade="all" unique="true"  />
         <many-to-one name="role" class="model.entities.Roles" column="ROLE_ID" cascade="all" unique="true" insert="false" update="false" />
     

@@ -11,13 +11,15 @@ public class Genres  implements java.io.Serializable {
 
      private int genreId;
      private String genre;
+     private String active;
 
     public Genres() {
     }
 
-    public Genres(int genreId, String genre) {
+     public Genres(int genreId, String genre, String active) {
        this.genreId = genreId;
        this.genre = genre;
+       this.active = active;
     }
    
     public int getGenreId() {
@@ -35,7 +37,13 @@ public class Genres  implements java.io.Serializable {
         this.genre = genre;
     }
 
+   public String getActive() {
+        return active;
+    }
 
+    public void setActive(String active) {
+        this.active = active;
+    }
 
 
 }

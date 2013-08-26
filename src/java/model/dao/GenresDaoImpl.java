@@ -23,7 +23,7 @@ public class GenresDaoImpl implements GenresDAO {
         try{
              session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            return (ArrayList<Genres>)session.createQuery("from Genres").list();
+            return (ArrayList<Genres>)session.createQuery("from Genres where active='T'").list();
             
         }
         catch(Exception e){
