@@ -31,6 +31,22 @@ public class GenresDaoImpl implements GenresDAO {
         }
     }
 
+    @Override
+    public boolean add(Genres genre) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.save(genre);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
  
 
 }

@@ -9,10 +9,12 @@
     </div>
     <br/>
     <div class="row">            
-        <button type="button" class="btn btn-warning pull-right" onclick="document.location.href = 'usuario/nuevo';">New Genre</button>                
+        <button type="button" class="btn btn-warning pull-right" onclick="document.location.href = '${pageContext.request.contextPath}/admin/addGenre';">New Genre</button>                
     </div>    
     <div  style="margin-top: 40px">      
         <div class="mainlist">
+            <input type="hidden" id="action" value="${pageContext.request.contextPath}/admin/deleteGenre"/>
+            <input type="text"  value="${pageContext.request.contextPath}/admin/deleteGenre"/>
             <table border="0" cellpadding="1px" cellspacing="0px"  nowrap="nowrap"  id="example" class="table-bordered data-table table table-hover" style="border: 1px solid black;">
                 <thead>
                     <tr>
@@ -32,23 +34,24 @@
                 </thead>
                 <tbody>
                     <s:iterator value="%{genreList}">
-                    <tr>
-                        <td>
-                            <s:property value="genreId"/>
-                        </td>
-                        <td>
-                            <s:property value="genre"/>                       
-                        </td>
-                        <td>
-                            <a href="#"><center><i class="icon-pencil"></i></center></a>
-                        </td>
-                        <td>
-                            <center><i class="icon-trash"></i></center>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <s:property value="genreId"/>
+                            </td>
+                            <td>
+                                <s:property value="genre"/>                       
+                            </td>
+                            <td>
+                                <a href="#"><center><i class="icon-pencil"></i></center></a>
+                            </td>
+                            <td>
+                                <center><i class="icon-trash" id="del" rel="<s:property value="genre"/>" value="<s:property value="genreId"/>"></i></center>
+                            </td>
+                        </tr>
                     </s:iterator>
                 </tbody>                
             </table>
         </div>
     </div>
 </div>  
+<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/adminAct.js"></script>

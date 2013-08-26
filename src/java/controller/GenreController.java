@@ -49,6 +49,20 @@ public class GenreController  {
         genreList = genreDao.list();
         return "success";
     }
-
+    public String addGenre() {
+        return "success";
+    }
+  
+    public String insertGenre() {
+         if (genreDao.add(genre)) {
+             msg = "Genre inserted";
+         }else{
+             msg = "Somethings goes worng, please try it again";
+         }
+        return "success";
+    }
+  public String deleteGenre() {
+        return "success";
+    }
     
 }

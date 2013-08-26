@@ -9,10 +9,11 @@
             <tiles:insertAttribute name="title" ignore="true" />
         </title>
         <script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.js"></script>
-        <link type="text/css" href="${pageContext.request.contextPath}/public/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <link type="text/css" href="${pageContext.request.contextPath}/public/css/style.css"  rel="stylesheet"/>    
+        <link type="text/css" href="${pageContext.request.contextPath}/public/css/style.css"  rel="stylesheet"/>  
+        <link type="text/css" href="${pageContext.request.contextPath}/public/bootstrap/css/bootstrap.css" rel="stylesheet" />          
         <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/validate.js"></script>
-        <link href="${pageContext.request.contextPath}/css/style_inner.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="http://sydneyapps.cloudservices.asia/auscommjobs/public/css/jquery.css" />
+        <script src="http://sydneyapps.cloudservices.asia/auscommjobs/public/js/jquery-ui.js"></script>
     </head>
     <body>
         <tiles:insertAttribute name="userLogin" />

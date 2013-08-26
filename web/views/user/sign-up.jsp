@@ -47,9 +47,9 @@
             <tr>
                 <td align="center"  >
                     <s:label value="%{msg}" ></s:label>
-                    </td>
-                </tr>
-            </table>
+                 </td>
+             </tr>
+         </table>
         <s:form name="form" id="form" action="addUser" method="post" theme="simple" >
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
@@ -64,7 +64,6 @@
                             <label for="user.firstName" class="control-label lblinput">First Name :   </label>
                             <div class="controls pull-right">
                                 <s:textfield type="text"  name="user.firstName" maxlength="50" size="30"/>
-                                <div id="errorE" class="errorFormat"></div>
                             </div>
                         </div>
                     </td>	
@@ -75,7 +74,6 @@
                             <label for="user.lastName" class="control-label lblinput">Last Name :</label>
                             <div class="controls pull-right">
                                 <s:textfield  name="user.lastName" maxlength="50" size="25"/>
-                                <div id="errorE" class="errorFormat"></div>
                             </div>
                         </div>   
                     </td>	
@@ -86,7 +84,6 @@
                             <label for="user.phoneNumber" class="control-label lblinput">Phone Number :</label>   
                             <div class="controls pull-right">
                                 <s:textfield  name="user.phoneNumber" maxlength="10" size="10"/>
-                                <div id="errorE" class="errorFormat"></div>
                             </div>
                         </div>
                     </td>	

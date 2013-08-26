@@ -55,8 +55,12 @@
     <definition name="genreList" extends="baseLayout">
         <put-attribute name="title"  value="Genre Menu"/>
         <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
-        <put-attribute name="title"  value="Welcome"/>
         <put-attribute name="body"   value="/views/admin/genre/list.jsp"/>          
+    </definition>
+    <definition name="addGenre" extends="baseLayout">
+        <put-attribute name="title"  value="Add Genre"/>
+        <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/genre/add.jsp"/>          
     </definition>
     
     

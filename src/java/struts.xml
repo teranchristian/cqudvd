@@ -60,9 +60,21 @@
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>        
-                   
+        
+  
+                 
         <action name="genre" class="controller.GenreController" method="genreList" >
             <result name="success" type="tiles">genreList</result>
+        </action>
+        <action name="deleteGenre" class="controller.GenreController" method="deleteGenre" >
+            <result name="success" type="tiles">genreList</result>
+        </action>
+        
+        <action name="addGenre" class="controller.GenreController" method="addGenre" >
+            <result name="success" type="tiles">addGenre</result>
+        </action>
+        <action name="insertGenre" class="controller.GenreController" method="insertGenre" >
+            <result name="success" type="tiles">addGenre</result>
         </action>
     </package>
 </struts>
