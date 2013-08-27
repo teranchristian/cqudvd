@@ -51,6 +51,14 @@
             <result name="userDetail" type="tiles">userDetail</result>
         </action>
         
+        <action name="userPassword" class="controller.UserController" method="userPassword" >
+            <result name="userPassword" type="tiles">userPassword</result>
+        </action> 
+        
+        <action name="changePassword" class="controller.UserController" method="changePassword" >
+            <result name="success" type="tiles">welcome</result>
+        </action>  
+                
         <action name="updateUser" class="controller.UserController" method="updateUser" >
             <result name="success" type="tiles">welcome</result>
         </action>

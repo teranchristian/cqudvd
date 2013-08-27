@@ -187,7 +187,23 @@ public class UserController implements SessionAware {
     public String userDetail() {
         String id = session.get("userId").toString();
         user = userDAO.usersDetail(id);
-        // String fName=uDetail.getFirstName();
         return "userDetail";
     }
+    
+    public String userPassword() {
+        login.setEmail(session.get("userEmail").toString());
+        return "userPassword";
+    }
+    
+    public String changePassword() {
+        login.setUserKey(UUID.randomUUID().toString());
+        login.setPassword(encryption(login.getPassword(), login.getUserKey()));
+        if (userDAO.updatePassword(login)) {
+            
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+    }
+    
 }

@@ -7,7 +7,7 @@ package model.dao;
 import java.util.ArrayList;
 import java.util.List;
 import model.entities.Users;
-
+import model.entities.Login;
 /**
  *
  * @author christian
@@ -27,4 +27,6 @@ public interface UsersDAO {
     public Users usersDetail(String id);
 
     public boolean updateDetail(Users user);
+    
+    public boolean updatePassword(Login login);
 }

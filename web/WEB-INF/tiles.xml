@@ -45,6 +45,11 @@
         <put-attribute name="body"   value="/views/user/userDetail.jsp"/>      
     </definition>
     
+    <definition name="userPassword" extends="baseLayout">
+        <put-attribute name="title"  value="Update Password"/>
+        <put-attribute name="body"   value="/views/user/userPassword.jsp"/>      
+    </definition>
+    
     <definition name="admin" extends="baseLayout">
         <put-attribute name="title"  value="Administrator"/>
         <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
