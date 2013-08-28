@@ -85,5 +85,9 @@
         <action name="edit" class="controller.GenreController" method="editGenre" >
             <result name="success" type="tiles">editGenre</result>
         </action>
+        <action name="updateGenre" class="controller.GenreController" method="updateGenre" >
+            <result name="success" type="tiles">genreList</result>
+            <result name="fail" type="tiles">editGenre</result>
+        </action>
     </package>
 </struts>
