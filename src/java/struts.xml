@@ -67,9 +67,7 @@
     <package name="default2"  namespace="/admin" extends="struts-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-        </result-types>        
-        
-  
+        </result-types>         
                  
         <action name="genre" class="controller.GenreController" method="genreList" >
             <result name="success" type="tiles">genreList</result>
@@ -83,6 +81,9 @@
         </action>
         <action name="insertGenre" class="controller.GenreController" method="insertGenre" >
             <result name="success" type="tiles">addGenre</result>
+        </action>
+        <action name="edit" class="controller.GenreController" method="editGenre" >
+            <result name="success" type="tiles">editGenre</result>
         </action>
     </package>
 </struts>
