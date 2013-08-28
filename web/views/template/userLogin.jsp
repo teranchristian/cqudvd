@@ -18,10 +18,10 @@
                                     </button>
                                     <ul class="dropdown-menu ">
                                         <li><a href="${pageContext.request.contextPath}/user/userDetail">Change your detail</a></li>
-                                        <li><a href="">Change your password</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/userPassword">Change your password</a></li>
                                     </ul>
                                 </div>
-                                | <a href="<s:url action="logout"/>" >logout</a> </h3>                      
+                                | <a href="<s:url value="http://localhost:8084/cqu/logout"/>" >logout</a> </h3>                      
                             </s:else>
                     </div>
                     <div class="span6">

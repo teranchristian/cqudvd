@@ -100,4 +100,22 @@ public class UsersDaoImpl implements UsersDAO {
             return false;
         }
     }
+
+    @Override
+    public boolean updatePassword(Login login) {
+         try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            
+            Query update = session.createQuery("update Login l set l.password='"+login.getPassword()+"', l.userKey='"+login.getUserKey()+"' where l.email='"+login.getEmail()+"'");
+            update.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
 }
