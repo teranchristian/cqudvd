@@ -6,6 +6,7 @@
     <table-filter match-name="LOGIN"/>
     <table-filter match-name="ROLES"/>
     <table-filter match-name="GENRES"/>
+    <table-filter match-name="CARDVEN"/>
 </hibernate-reverse-engineering>
 
 

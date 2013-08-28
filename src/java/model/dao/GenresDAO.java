@@ -14,5 +14,6 @@ import model.entities.Genres;
 public interface GenresDAO {
     public ArrayList<Genres> list();
     public boolean add(Genres genre);
+    public boolean delete(String id);
     
 }

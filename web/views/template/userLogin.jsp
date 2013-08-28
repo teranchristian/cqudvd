@@ -21,7 +21,7 @@
                                         <li><a href="${pageContext.request.contextPath}/user/userPassword">Change your password</a></li>
                                     </ul>
                                 </div>
-                                | <a href="<s:url value="http://localhost:8084/cqu/logout"/>" >logout</a> </h3>                      
+                                | <a href="${pageContext.request.contextPath}/logout" >logout</a> </h3>                      
                             </s:else>
                     </div>
                     <div class="span6">

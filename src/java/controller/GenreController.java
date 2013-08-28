@@ -21,6 +21,11 @@ public class GenreController  {
     ArrayList<Genres> genreList = new ArrayList();
     GenresDAO genreDao;
     String msg;
+    String itemId;
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
     
     public GenreController(){
         genreDao= new GenresDaoImpl();
@@ -62,6 +67,11 @@ public class GenreController  {
         return "success";
     }
   public String deleteGenre() {
+      if (genreDao.delete(itemId)) {
+            msg = "genre deleted";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
         return "success";
     }
     
