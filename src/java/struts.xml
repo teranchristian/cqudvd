@@ -67,7 +67,7 @@
             <result name="success" type="tiles">genreList</result>
         </action>
         <action name="deleteGenre" class="controller.GenreController" method="deleteGenre" >
-            <result name="success" type="tiles">genreList</result>
+            <result name="success" type="redirect">genre</result>
         </action>
         
         <action name="addGenre" class="controller.GenreController" method="addGenre" >
