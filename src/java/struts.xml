@@ -46,10 +46,7 @@
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>     
-        
-         <action name="*" method="welcome" class="controller.ActionLinkController">            
-        </action> 
-        
+                
         <action name="userDetail" class="controller.UserController" method="userDetail" >
             <result name="userDetail" type="tiles">userDetail</result>
         </action>
