@@ -1,1 +1,1 @@
-<META HTTP-EQUIV="Refresh" CONTENT="0;URL=welcome">
+<META HTTP-EQUIV="Refresh" CONTENT="0;URL=index">

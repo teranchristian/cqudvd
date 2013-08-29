@@ -78,9 +78,8 @@ public class UsersDaoImpl implements UsersDAO {
     public Users usersDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
-        Users u = (Users) session.createQuery("from Users u " + "where u.userId =" + id).uniqueResult();
-        return u;
-    }
+        return (Users) session.createQuery("from Users u " + "where u.userId =" + id).uniqueResult();
+   }
 
     @Override
     public boolean updateDetail(Users user) {

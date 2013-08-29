@@ -27,8 +27,11 @@
         <action name="logout" class="controller.UserController" method="logout" >
             <result name="success" type="tiles">welcome</result>   
         </action>
-        
-        <action name="*" method="{1}" class="controller.ActionLinkController">            
+        <action name="index" class="controller.UserController" method="welcome" >
+            <result name="admin" type="tiles">admin</result>   
+            <result name="user" type="tiles">welcome</result>   
+        </action>
+        <action name="*" method="{1}" class="controller.ActionLinkController">                        
             <result name="login" type="tiles">login</result>
             <result name="signUp" type="tiles">signUp</result>
         </action>                
@@ -46,7 +49,9 @@
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>     
-                
+        
+       
+                        
         <action name="userDetail" class="controller.UserController" method="userDetail" >
             <result name="userDetail" type="tiles">userDetail</result>
         </action>
@@ -69,6 +74,10 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>         
                  
+         <action name="*" method="adminPanel" class="controller.UserController">            
+            <result name="success" type="tiles">login</result>
+        </action> 
+                 
         <action name="genre" class="controller.GenreController" method="genreList" >
             <result name="success" type="tiles">genreList</result>
         </action>
@@ -86,7 +95,7 @@
             <result name="success" type="tiles">editGenre</result>
         </action>
         <action name="updateGenre" class="controller.GenreController" method="updateGenre" >
-            <result name="success" type="tiles">genreList</result>
+            <result name="success" type="redirect">genre</result>
             <result name="fail" type="tiles">editGenre</result>
         </action>
     </package>

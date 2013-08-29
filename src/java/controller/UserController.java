@@ -189,21 +189,29 @@ public class UserController implements SessionAware {
         user = userDAO.usersDetail(id);
         return "userDetail";
     }
-    
+
     public String userPassword() {
         login.setEmail(session.get("userEmail").toString());
         return "userPassword";
     }
-    
+
     public String changePassword() {
         login.setUserKey(UUID.randomUUID().toString());
         login.setPassword(encryption(login.getPassword(), login.getUserKey()));
         if (userDAO.updatePassword(login)) {
-            
         } else {
             msg = "Somethings goes worng, please try it again";
         }
         return "success";
     }
-    
+
+    //login control
+    public String welcome() {
+        if (session.get("userRole") != null) {
+            if (session.get("userRole").toString().equals("ADMIN")) {
+                return "admin";
+            }
+        }
+        return "user";
+    }
 }

@@ -74,5 +74,17 @@ public class GenreController  {
         }
         return "success";
     }
+  public String editGenre() {
+        genre = genreDao.genreDetail(itemId);
+        return "success";
+    }
+  public String updateGenre() {
+        if (genreDao.update(genre)){
+            return "success";
+        }else{
+            return "fail";
+        }
+        
+    }
     
 }
