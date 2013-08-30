@@ -28,8 +28,14 @@
                             ID
                         </th>
                         <th class="mainlistheading" align="left" valign="center">
-                            GENRE
-                        </th>		
+                            TITLE
+                        </th>
+                        <th class="mainlistheading" align="left" valign="center">
+                            RELEASE YEAR
+                        </th>
+                        <th class="mainlistheading" align="left" valign="center">
+                            DESCRIPTION
+                        </th>	
                         <th class="mainlistheading" style="width: 5%">
                             EDIT
                         </th>						
@@ -39,16 +45,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <s:iterator value="%{genreList}">
+                    <s:iterator value="%{list}">
                         <tr>
                             <td>
-                                <s:property value="genreId"/>
+                                <s:property value="movieId"/>
                             </td>
                             <td>
-                                <s:property value="genre"/>                       
+                                <s:property value="movieTitle"/>                       
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/admin/edit?itemId=<s:property value="genreId"/>"><center><i class="icon-pencil"></i></center></a>
+                                <s:property value="releaseYear"/>                       
+                            </td><td>
+                                <s:property value="description"/>                       
+                            </td>                            
+                            <td>
+                                <a href="${pageContext.request.contextPath}/admin/edit?itemId=<s:property value="movieId"/>"><center><i class="icon-pencil"></i></center></a>
                             </td>
                             <td>
                             <center><i class="icon-trash" id="del" rel="<s:property value="genre"/>" value="<s:property value="genreId"/>"></i></center>

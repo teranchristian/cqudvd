@@ -23,7 +23,15 @@ public class MoviesDAOImpl implements MoviesDAO {
     
     @Override
     public ArrayList<Movies> list() {
-    return list();    
+    try{
+             session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            return (ArrayList<Movies>)session.createQuery("from Movies where active='T'").list();
+            
+        }
+        catch(Exception e){
+            return null;
+        }  
     }
 
     @Override

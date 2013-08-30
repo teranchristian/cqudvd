@@ -18,6 +18,20 @@ public class MovieController  {
    private Movies movie=new Movies();
    private String msg;
    private MoviesDAO moviesDAO= new MoviesDAOImpl();
+   ArrayList<Movies> list = new ArrayList();
+
+    public ArrayList<Movies> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<Movies> list) {
+        this.list = list;
+    }
+    
+    public String list(){
+        list = moviesDAO.list();
+        return "success";
+    }
 
     public String getMsg() {
         return msg;
@@ -36,9 +50,7 @@ public class MovieController  {
         this.movie = movie;
     }
     
-    public String list(){
-        return "success";
-    }
+    
     public String addMovie(){
         return "success";
     }        
