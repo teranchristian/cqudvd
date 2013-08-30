@@ -304,6 +304,12 @@ label.error {
     -webkit-font-smoothing: antialiased;
 }
 
+.divminheight{
+     min-height:500px;
+     height:auto !important; 
+     height:500px;
+}
+
 .btn-size-action {
     width: 50px;
 }

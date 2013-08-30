@@ -17,7 +17,9 @@
     <body>
         <tiles:insertAttribute name="userLogin" />
         <tiles:insertAttribute name="menu" />
+        <div class="divminheight">
         <tiles:insertAttribute name="body" />
+        </div>
         <tiles:insertAttribute name="footer" />
         <script type="text/javascript" src="${pageContext.request.contextPath}/public/bootstrap/js/bootstrap.js"></script>
     </body>
