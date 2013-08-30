@@ -19,6 +19,15 @@ public class MovieController  {
    private String msg;
    private MoviesDAO moviesDAO= new MoviesDAOImpl();
    ArrayList<Movies> list = new ArrayList();
+   String itemId;
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
 
     public ArrayList<Movies> getList() {
         return list;
@@ -65,7 +74,15 @@ public class MovieController  {
         
     }        
 
-    
+    public String deleteMovie(){
+        
+      if (moviesDAO.delete(itemId)) {
+            msg = "movie deleted";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+    }   
     
     
 }

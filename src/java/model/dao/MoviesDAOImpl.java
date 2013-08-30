@@ -51,5 +51,22 @@ public class MoviesDAOImpl implements MoviesDAO {
         
     }
 
+    @Override
+    public boolean delete(String id) {
+    try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            Query update = session.createQuery("update Movies  set active ='F'  where movieId =" + id);
+            update.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
     
 }

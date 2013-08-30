@@ -28,7 +28,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movies.movieTitle" class="control-label lblinput">Title :   </label>
+                            <label for="movie.movieTitle" class="control-label lblinput">Title :   </label>
                             <div class="controls pull-right">
                                 <s:textfield  name="movie.movieTitle" maxlength="50" size="30"/>                                
                             </div>
@@ -38,7 +38,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movies.releaseYear" class="control-label lblinput">Release Year :   </label>
+                            <label for="movie.releaseYear" class="control-label lblinput">Release Year :   </label>
                             <div class="controls pull-right">
                                 <s:textfield  name="movie.releaseYear" maxlength="5" size="5"/>                                
                             </div>
@@ -49,7 +49,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movies.description" class="control-label lblinput">Description :   </label>
+                            <label for="movie.description" class="control-label lblinput">Description :   </label>
                             <div class="controls pull-right">
                                 <s:textarea name="movie.description" cols="40" rows="10"/>
                             </div>

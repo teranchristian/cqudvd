@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div class="headblocktitle">List of genres</div>
+            <div class="headblocktitle">List of movies</div>
         </div>
     </div>
     <br/>
@@ -62,7 +62,7 @@
                                 <a href="${pageContext.request.contextPath}/admin/edit?itemId=<s:property value="movieId"/>"><center><i class="icon-pencil"></i></center></a>
                             </td>
                             <td>
-                            <center><i class="icon-trash" id="del" rel="<s:property value="genre"/>" value="<s:property value="genreId"/>"></i></center>
+                            <center><i class="icon-trash" id="del" rel="<s:property value="movieTitle"/>" value="<s:property value="movieId"/>"></i></center>
                     </td>
                     </tr>
                 </s:iterator>

@@ -108,6 +108,9 @@
         <action name="insertMovie" class="controller.MovieController" method="insertMovie" >
             <result name="success" type="tiles">addMovie</result>
         </action>
+        <action name="deleteMovie" class="controller.MovieController" method="deleteMovie" >
+            <result name="success" type="redirect">movies</result>
+        </action>
         
     </package>
 </struts>
