@@ -72,6 +72,15 @@
         <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/genre/edit.jsp"/>          
     </definition>
-    
-    
+    <!-- START (ADMIN) genre  -->
+    <definition name="movieList" extends="baseLayout">
+        <put-attribute name="title"  value="Genre Menu"/>
+        <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/list.jsp"/>          
+    </definition>
+    <definition name="addMovie" extends="baseLayout">
+        <put-attribute name="title"  value="Add Movie"/>
+        <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/add.jsp"/>          
+    </definition>
 </tiles-definitions>

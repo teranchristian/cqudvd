@@ -27,7 +27,7 @@
                     <div class="menuOption" style="">
                         <ul id="nav">
                             <li><a href="${pageContext.request.contextPath}/admin/genre">Genres</a></li>
-                            <li><a href="#">Movies</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/movies">Movies</a></li>
                             <li><a href="#">Reports</a></li>
                         </ul>
                     </div>

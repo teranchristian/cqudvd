@@ -97,6 +97,17 @@
         <action name="updateGenre" class="controller.GenreController" method="updateGenre" >
             <result name="success" type="redirect">genre</result>
             <result name="fail" type="tiles">editGenre</result>
+        </action>    
+        
+        <action name="movies" class="controller.MovieController" method="list" >
+            <result name="success" type="tiles">movieList</result>
         </action>
+        <action name="addMovie" class="controller.MovieController" method="addMovie" >
+            <result name="success" type="tiles">addMovie</result>
+        </action>
+        <action name="insertMovie" class="controller.MovieController" method="insertMovie" >
+            <result name="success" type="tiles">addMovie</result>
+        </action>
+        
     </package>
 </struts>
