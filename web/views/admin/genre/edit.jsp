@@ -36,7 +36,7 @@
                 </tr>
             </table>
         <s:form name="form" id="form" action="updateGenre" method="post" theme="simple" >
-            <input type="hidden" name="genre.genreId" />
+            <s:hidden  name="genre.genreId" />
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
