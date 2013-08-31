@@ -74,7 +74,7 @@
     </definition>
     <!-- START (ADMIN) movie  -->
     <definition name="movieList" extends="baseLayout">
-        <put-attribute name="title"  value="Genre Menu"/>
+        <put-attribute name="title"  value="Movie Menu"/>
         <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/movies/list.jsp"/>          
     </definition>
@@ -82,5 +82,10 @@
         <put-attribute name="title"  value="Add Movie"/>
         <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/movies/add.jsp"/>          
+    </definition>
+    <definition name="editMovie" extends="baseLayout">
+        <put-attribute name="title"  value="Edit Movie"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/update.jsp"/>          
     </definition>
 </tiles-definitions>

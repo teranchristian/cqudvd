@@ -59,7 +59,7 @@
                                 <s:property value="description"/>                       
                             </td>                            
                             <td>
-                                <a href="${pageContext.request.contextPath}/admin/edit?itemId=<s:property value="movieId"/>"><center><i class="icon-pencil"></i></center></a>
+                                <a href="${pageContext.request.contextPath}/admin/update?itemId=<s:property value="movieId"/>"><center><i class="icon-pencil"></i></center></a>
                             </td>
                             <td>
                             <center><i class="icon-trash" id="del" rel="<s:property value="movieTitle"/>" value="<s:property value="movieId"/>"></i></center>

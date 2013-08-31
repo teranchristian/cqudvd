@@ -3,8 +3,14 @@
     $(document).ready(function() {
         $("#form").validate({
             rules: {
-                "movie.movie": {
-                    required: true
+                "movie.movieTitle": {
+                    required: true 
+                },
+                "movie.releaseYear": {
+                    required: true 
+                },
+                "movie.description": {
+                    required: true 
                 }
             },
             highlight: function(element) {
@@ -36,7 +42,7 @@
                 </tr>
             </table>
         <s:form name="form" id="form" action="updateMovie" method="post" theme="simple" >
-            <input type="hidden" name="movie.movieId" />
+            <s:hidden  name="movie.movieId" />
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
@@ -47,13 +53,32 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movies.movieName" class="control-label lblinput">Movie Name :   </label>
+                            <label for="movie.movieTitle" class="control-label lblinput">Movie Name :   </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movie.movie" maxlength="50" size="30"/>                                
+                            <s:textfield  name="movie.movieTitle" maxlength="50" size="30"/>   
+                                <div id="errorE" class="errorFormat"></div>
                             </div>
-                            <label for="movies.movie" class="control-label lblinput">Movie Name :   </label>
+                        </div>
+                    </td>
+                </tr>  
+                <tr>  
+                    <td colspan="2">
+                        <div class="control-group">
+                            <label for="movies.releaseYear" class="control-label lblinput">Release Year :   </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movie.movie" maxlength="50" size="30"/>                                
+                            <s:textfield  name="movie.releaseYear" maxlength="50" size="30"/>
+                                <div id="errorE" class="errorFormat"></div>                              
+                            </div>
+                        </div>
+                    </td>
+                </tr>  
+                <tr>                      
+                    <td colspan="2">
+                        <div class="control-group">
+                            <label for="movies.description" class="control-label lblinput">Description :   </label>
+                            <div class="controls pull-right">
+                            <s:textarea label="Description" name="movie.description" cols="40" rows="10"/>
+                                <div id="errorE" class="errorFormat"></div>                              
                             </div>
                         </div>
                     </td>	
