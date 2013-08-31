@@ -5,6 +5,7 @@
 package controller;
 import model.entities.Movies;
 import java.util.ArrayList;
+import model.entities.Genres;
 import java.util.Map;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
@@ -19,6 +20,7 @@ public class MovieController  {
    private String msg;
    private MoviesDAO moviesDAO= new MoviesDAOImpl();
    ArrayList<Movies> list = new ArrayList();
+   ArrayList<Genres> listGenre = new ArrayList();
    String itemId;
 
     public String getItemId() {
