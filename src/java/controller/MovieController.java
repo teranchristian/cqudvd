@@ -74,6 +74,20 @@ public class MovieController  {
         
     }        
 
+    
+  public String editMovie() {
+        movie = moviesDAO.movieDetail(itemId);
+        return "success";
+    }
+
+  public String updateMovie() {
+        if (moviesDAO.updateMovie(movie)){
+            return "success";
+        }else{
+            return "fail";
+        }
+  }
+
     public String deleteMovie(){
         
       if (moviesDAO.delete(itemId)) {

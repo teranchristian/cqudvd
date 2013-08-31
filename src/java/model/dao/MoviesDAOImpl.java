@@ -18,6 +18,7 @@ import org.hibernate.Query;
 public class MoviesDAOImpl implements MoviesDAO {
     private Session session;
     private Transaction transaction;
+    private String updateId;
     
     
     
@@ -50,7 +51,31 @@ public class MoviesDAOImpl implements MoviesDAO {
         }
         
     }
+    
+    @Override
+    public Movies movieDetail(String id) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = session.beginTransaction();
+        return (Movies) session.createQuery("from Movies where movieId =" + id).uniqueResult();
+    }
+    
 
+    @Override
+    public boolean updateMovie(Movies movie) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.update(movie);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+    
     @Override
     public boolean delete(String id) {
     try {

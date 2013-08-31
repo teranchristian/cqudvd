@@ -108,6 +108,14 @@
         <action name="insertMovie" class="controller.MovieController" method="insertMovie" >
             <result name="success" type="tiles">addMovie</result>
         </action>
+        
+        <action name="update" class="controller.MovieController" method="editMovie" >
+            <result name="success" type="tiles">editMovie</result>
+        </action>
+        <action name="updateMovie" class="controller.MovieController" method="updateMovie" >
+            <result name="success" type="redirect">movies</result>
+            <result name="fail" type="tiles">updateMovie</result>
+        </action> 
         <action name="deleteMovie" class="controller.MovieController" method="deleteMovie" >
             <result name="success" type="redirect">movies</result>
         </action>

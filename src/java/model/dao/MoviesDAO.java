@@ -12,5 +12,7 @@ import model.entities.Movies;
 public interface MoviesDAO {
     public ArrayList<Movies> list();
     public boolean insert(Movies movie);
+    public Movies movieDetail(String id);
+    public boolean updateMovie(Movies movie);
     public boolean delete(String id);
 }
