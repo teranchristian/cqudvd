@@ -3,23 +3,33 @@
  * and open the template in the editor.
  */
 package controller;
+import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import model.entities.Movies;
 import java.util.ArrayList;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author cardven
  */
-public class MovieController  {
+public class MovieController  extends ActionSupport implements
+        ServletRequestAware {
    private Movies movie=new Movies();
    private String msg;
    private MoviesDAO moviesDAO= new MoviesDAOImpl();
    ArrayList<Movies> list = new ArrayList();
    String itemId;
+   private File userImage;
+   private String userImageContentType;
+   private String userImageFileName; 
+   private HttpServletRequest servletRequest;
 
     public String getItemId() {
         return itemId;
@@ -66,7 +76,21 @@ public class MovieController  {
     
     public String insertMovie(){
         if (moviesDAO.insert(movie)) {
-             msg = "Movie inserted";
+             try {
+            String filePath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");
+            
+            System.out.println("Server path:" + filePath);
+            File fileToCreate = new File(filePath, movie.getMovieTitle()+".png");
+ 
+            FileUtils.copyFile(this.userImage, fileToCreate);
+             msg = "Movie have been created";
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            addActionError(e.getMessage());
+ 
+           msg = "Somethings goes worng, please try it again";
+        }
          }else{
              msg = "Somethings goes worng, please try it again";
          }
@@ -96,7 +120,40 @@ public class MovieController  {
             msg = "Somethings goes worng, please try it again";
         }
         return "success";
-    }   
+      
+    }    
+ 
+    public File getUserImage() {
+        return userImage;
+    }
+ 
+    public void setUserImage(File userImage) {
+        this.userImage = userImage;
+    }
+ 
+    public String getUserImageContentType() {
+        return userImageContentType;
+    }
+ 
+    public void setUserImageContentType(String userImageContentType) {
+        this.userImageContentType = userImageContentType;
+    }
+ 
+    public String getUserImageFileName() {
+        return userImageFileName;
+    }
+ 
+    public void setUserImageFileName(String userImageFileName) {
+        this.userImageFileName = userImageFileName;
+    }
+ 
+    @Override
+    public void setServletRequest(HttpServletRequest servletRequest) {
+        this.servletRequest = servletRequest;
+ 
+    }
+
+        
+    }
     
-    
-}
+

@@ -1,5 +1,29 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
-
+<script>
+    $(document).ready(function() {
+        $("#form").validate({
+            rules: {
+                "movie.movieTitle": {
+                    required: true 
+                },
+                "movie.releaseYear": {
+                    required: true 
+                },
+                "movie.description": {
+                    required: true 
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+    });
+</script>
 <br>
 <br>
 <div class="container">
@@ -17,7 +41,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form name="form" id="form" action="insertMovie" method="post" theme="simple" >
+        <s:form name="form" id="form" action="insertMovie" method="post" theme="simple" enctype="multipart/form-data">
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
@@ -54,6 +78,16 @@
                                 <s:textarea name="movie.description" cols="40" rows="10"/>
                             </div>
                         </div>
+                    </td>	
+                </tr>
+                <tr>
+                    <td >
+                        Image:
+                    </td><td>       
+                            <div class="controls pull-right">
+                                <s:file name="userImage"/>
+                            </div>
+                        
                     </td>	
                 </tr>
                 

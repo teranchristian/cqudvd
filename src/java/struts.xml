@@ -119,6 +119,6 @@
         <action name="deleteMovie" class="controller.MovieController" method="deleteMovie" >
             <result name="success" type="redirect">movies</result>
         </action>
-        
+         
     </package>
 </struts>
