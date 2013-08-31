@@ -3,8 +3,14 @@
     $(document).ready(function() {
         $("#form").validate({
             rules: {
-                "movie.movie": {
-                    required: true
+                "movie.movieTitle": {
+                    required: true 
+                },
+                "movie.releaseYear": {
+                    required: true 
+                },
+                "movie.description": {
+                    required: true 
                 }
             },
             highlight: function(element) {
@@ -53,7 +59,10 @@
                                 <div id="errorE" class="errorFormat"></div>
                             </div>
                         </div>
-                                
+                    </td>
+                </tr>  
+                <tr>  
+                    <td colspan="2">
                         <div class="control-group">
                             <label for="movies.releaseYear" class="control-label lblinput">Release Year :   </label>
                             <div class="controls pull-right">
@@ -61,7 +70,10 @@
                                 <div id="errorE" class="errorFormat"></div>                              
                             </div>
                         </div>
-                                
+                    </td>
+                </tr>  
+                <tr>                      
+                    <td colspan="2">
                         <div class="control-group">
                             <label for="movies.description" class="control-label lblinput">Description :   </label>
                             <div class="controls pull-right">
