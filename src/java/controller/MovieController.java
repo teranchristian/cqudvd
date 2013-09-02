@@ -77,16 +77,13 @@ public class MovieController  extends ActionSupport implements
     }        
     
     public String insertMovie(){
-        if (moviesDAO.insert(movie)) {
+        int movieId =moviesDAO.insert(movie);
+        if (movieId!=0) {
              try {
-            String filePath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");
-            
-            System.out.println("Server path:" + filePath);
-            File fileToCreate = new File(filePath, movie.getMovieTitle()+".png");
- 
+            String filePath  = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");         
+            File fileToCreate = new File(filePath, movieId+".png"); 
             FileUtils.copyFile(this.userImage, fileToCreate);
-             msg = "Movie have been created";
-            
+             msg = "Movie have been created";            
         } catch (Exception e) {
             e.printStackTrace();
             addActionError(e.getMessage());

@@ -67,7 +67,6 @@
                             <label for="movies.releaseYear" class="control-label lblinput">Release Year :   </label>
                             <div class="controls pull-right">
                             <s:textfield  name="movie.releaseYear" maxlength="50" size="30"/>
-                                <div id="errorE" class="errorFormat"></div>                              
                             </div>
                         </div>
                     </td>
@@ -77,8 +76,19 @@
                         <div class="control-group">
                             <label for="movies.description" class="control-label lblinput">Description :   </label>
                             <div class="controls pull-right">
-                            <s:textarea label="Description" name="movie.description" cols="40" rows="10"/>
-                                <div id="errorE" class="errorFormat"></div>                              
+                            <s:textarea label="Description" name="movie.description" cols="40" rows="10"/>                            
+                            </div>
+                        </div>
+                    </td>	
+                </tr>			
+                <tr>                      
+                    <td colspan="2">
+                        <div class="control-group">
+                            Movie cover :  
+                            <div class="controls pull-right">
+                                <a href="#" class="thumbnail" style="margin-left:5px;">
+                                <img src="${pageContext.request.contextPath}/public/moviepic/${movie.movieId}.png"/>
+                                </a>
                             </div>
                         </div>
                     </td>	
