@@ -104,23 +104,9 @@ public class MovieController  extends ActionSupport implements
     }
 
   public String updateMovie() {
-        int movieId =moviesDAO.updateMovie(movie);
-      
-      if (movieId!=0){
-          try {
-            String filePath  = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");         
-            File fileToCreate = new File(filePath, movieId+".png"); 
-            FileUtils.copyFile(this.userImage, fileToCreate);
-            return "success";            
-        } catch (Exception e) {
-            e.printStackTrace();
-            addActionError(e.getMessage());
- 
-           msg = "Somethings goes worng, please try it again";
-            return "fail";
-        }
-      }
-    else{
+        if (moviesDAO.updateMovie(movie)){
+            return "success";
+        }else{
             return "fail";
         }
   }

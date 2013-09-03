@@ -41,7 +41,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form name="form" id="form" action="updateMovie" method="post" theme="simple" enctype="multipart/form-data">
+        <s:form name="form" id="form" action="updateMovie" method="post" theme="simple" >
             <s:hidden  name="movie.movieId" />
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
@@ -64,7 +64,7 @@
                 <tr>  
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movie.releaseYear" class="control-label lblinput">Release Year :   </label>
+                            <label for="movies.releaseYear" class="control-label lblinput">Release Year :   </label>
                             <div class="controls pull-right">
                             <s:textfield  name="movie.releaseYear" maxlength="50" size="30"/>
                             </div>
@@ -74,7 +74,7 @@
                 <tr>                      
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movie.description" class="control-label lblinput">Description :   </label>
+                            <label for="movies.description" class="control-label lblinput">Description :   </label>
                             <div class="controls pull-right">
                             <s:textarea label="Description" name="movie.description" cols="40" rows="10"/>                            
                             </div>
@@ -92,17 +92,7 @@
                             </div>
                         </div>
                     </td>	
-                </tr>
-                <tr>
-                    <td>
-                        Image:
-                    </td><td>       
-                            <div class="controls pull-right">
-                                <s:file name="userImage"/>
-                            </div>
-                        
-                    </td>	
-                </tr>
+                </tr>			
                 <tr>
                     <td colspan="2">
                         <div class="modal-footer">  
@@ -111,8 +101,7 @@
                         </div>
 
                     </td>					
-                </tr>                
-                
+                </tr>						
             </table>	
         </s:form>
     </div> 
