@@ -13,6 +13,6 @@ public interface MoviesDAO {
     public ArrayList<Movies> list();
     public int insert(Movies movie);
     public Movies movieDetail(String id);
-    public boolean updateMovie(Movies movie);
+    public int updateMovie(Movies movie);
     public boolean delete(String id);
 }

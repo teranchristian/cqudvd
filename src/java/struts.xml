@@ -114,7 +114,7 @@
         </action>
         <action name="updateMovie" class="controller.MovieController" method="updateMovie" >
             <result name="success" type="redirect">movies</result>
-            <result name="fail" type="tiles">updateMovie</result>
+            <result name="fail" type="tiles">editMovie</result>
         </action> 
         <action name="deleteMovie" class="controller.MovieController" method="deleteMovie" >
             <result name="success" type="redirect">movies</result>

@@ -63,18 +63,19 @@ public class MoviesDAOImpl implements MoviesDAO {
     
 
     @Override
-    public boolean updateMovie(Movies movie) {
+    public int updateMovie(Movies movie) {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             session.update(movie);
+            session.flush(); 
             transaction.commit();
-            return true;
+            return movie.getMovieId() ;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            return false;
+            return 0;
         }
     }
     
