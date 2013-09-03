@@ -41,7 +41,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form name="form" id="form" action="updateMovie" method="post" theme="simple" >
+        <s:form name="form" id="form" action="updateMovie" method="post" theme="simple" enctype="multipart/form-data">
             <s:hidden  name="movie.movieId" />
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
@@ -92,7 +92,17 @@
                             </div>
                         </div>
                     </td>	
-                </tr>			
+                </tr>
+                <tr>
+                    <td >
+                        Image:
+                    </td><td>       
+                            <div class="controls pull-right">
+                                <s:file name="userImage"/>
+                            </div>
+                        
+                    </td>	
+                </tr>
                 <tr>
                     <td colspan="2">
                         <div class="modal-footer">  
