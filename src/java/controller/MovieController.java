@@ -82,7 +82,12 @@ public class MovieController  extends ActionSupport implements
              try {
             String filePath  = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");         
             File fileToCreate = new File(filePath, movieId+".png"); 
+            String buildPath = servletRequest.getSession().getServletContext().getRealPath("/web/public/moviepic");   
+          
+            File fileToCreateBuild = new File(buildPath, movieId+".png"); 
+            
             FileUtils.copyFile(this.userImage, fileToCreate);
+            FileUtils.copyFile(this.userImage, fileToCreateBuild);
              msg = "Movie have been created";            
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,9 +112,13 @@ public class MovieController  extends ActionSupport implements
         int movieId=moviesDAO.updateMovie(movie);
            if (movieId!=0) {
              try {
-            String filePath  = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");         
-            File fileToCreate = new File(filePath, movieId+".png"); 
-            FileUtils.copyFile(this.userImage, fileToCreate);
+            String filePath  = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");  
+            String buildPath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");          
+            File fileToCreateBuild = new File(buildPath, movieId+".png"); 
+            File fileToCreate = new File(filePath, movieId+".png");
+            System.out.println("\n\nthe path is \n"+fileToCreateBuild);
+            FileUtils.copyFile(this.userImage, fileToCreate);            
+            FileUtils.copyFile(this.userImage, fileToCreateBuild);
              return "success";      
         } catch (Exception e) {
             e.printStackTrace();
