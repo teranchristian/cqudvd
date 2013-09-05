@@ -26,9 +26,21 @@
                 <div class="span12 ">
                     <div class="menuOption" style="">
                         <ul id="nav">
-                            <li><a href="${pageContext.request.contextPath}/admin/genre">Genres</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/movies">Movies</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/genre">Genres</a></li>                  
+                            <li class="dropdown">
+                                <a href="${pageContext.request.contextPath}/admin/movies" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                                    Movie<b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies">Add Movies</a></li>
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies">Buy Categories</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies">Rent Categories</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Reports</a></li>
+
                         </ul>
                     </div>
                 </div>
