@@ -197,7 +197,7 @@ public class MovieController extends ActionSupport implements
     @Override
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
-
+}
     
     // -----------------------------------Buy Movies------------------------
     public String listBuy(){
@@ -206,5 +206,5 @@ public class MovieController extends ActionSupport implements
     }
     
         
-    }
+    
 }
