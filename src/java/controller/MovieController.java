@@ -33,6 +33,24 @@ public class MovieController extends ActionSupport implements
    ArrayList<MoviesType> listType = new ArrayList();
    ArrayList<Genres> listGenre = new ArrayList();
    String itemId;
+    private MoviesType movieType=new MoviesType();
+    private ArrayList<Movies> listForBuy=new ArrayList();
+
+    public ArrayList<Movies> getListForBuy() {
+        return listForBuy;
+    }
+
+    public void setListForBuy(ArrayList<Movies> listForBuy) {
+        this.listForBuy = listForBuy;
+    }
+
+    public MoviesType getMovieType() {
+        return movieType;
+    }
+
+    public void setMovieType(MoviesType movieType) {
+        this.movieType = movieType;
+    }
 
     public ArrayList<MoviesType> getListType() {
         return listType;
@@ -205,6 +223,51 @@ public class MovieController extends ActionSupport implements
         return "success";
     }
     
+    public String editBuy() {
+        movieType = moviesDAO.buyDetail(itemId);
         
+        return "success";
+    }
+      
+    public String updateBuy() {
+      int movieTypeId = moviesDAO.updateBuy(movieType);
+        if (movieTypeId != 0) {
+        return "success";}
+        else{
+            msg="something is not right";
+            return "fail";
+        }
+    }
     
+     public String addBuy(){
+         listForBuy = moviesDAO.listForBuy();
+         return "success";
+     }
+     
+     public String insertBuy(){
+         movie=moviesDAO.movieDetail(""+movie.getMovieId());
+        movieType.setMovie(movie);
+        movieType.setMovieType("BUY");
+          int movieTypeId = moviesDAO.insertBuy(movieType);
+          if(movieTypeId!=0){
+              msg="Movies has created into Buy Categories";
+          }else{
+              msg="Something went wrong";
+          }
+         return "success";
+     }
+    
+     public String deleteBuy() {
+
+        if (moviesDAO.deleteBuy(itemId)) {
+            msg = "movie deleted from Buy";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+
+    }
+    
+    
+     
 }

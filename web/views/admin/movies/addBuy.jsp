@@ -7,12 +7,19 @@
                     required: true 
                 },
                 "movie.releaseYear": {
-                    required: true 
+                    required: true,
+                    digits: true
                 },
                 "movie.description": {
                     required: true 
+                },
+                "userImage": {
+                    required: true,
+                    accept: "png|jpe?g|gif", 
+                    filesize: 1048576
                 }
             },
+             messages: { "userImage": "File must be JPG, GIF or PNG, less than 1MB" },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
@@ -29,7 +36,7 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <div class="headblocktitle">Edit Buy Movie </div>
+            <div class="headblocktitle">Add new Buy Movie</div>
         </div>
     </div>
     <br/>
@@ -41,8 +48,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form name="form" id="form" action="updateBuy" method="post" theme="simple" >
-            <s:hidden  name="movieType.movieTypeId" />
+        <s:form name="form" id="form" action="insertBuy" method="post" theme="simple" >
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
@@ -50,37 +56,40 @@
                         <input type="hidden"  maxlength="50" size="30"  />
                     </td>	
                 </tr>                 
+                	
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.movie.movieTitle" class="control-label lblinput">Movie Name :   </label>
+                            <label for="movie.movieId" class="control-label lblinput">Movie Title :   </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movieType.movie.movieTitle" maxlength="50" size="30" readonly="true"/>   
-                                <div id="errorE" class="errorFormat"></div>
+                                <s:select name="movie.movieId"  label="movie.movieId"  list="%{listForBuy}" listKey="movieId" listValue="movieTitle" value="%{movie.movieId}"/>
                             </div>
                         </div>
-                    </td>
-                </tr>  
-                <tr>  
+                    </td>	
+                </tr>	
+                <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.price" class="control-label lblinput">Price :   </label>
+                            <label for="movieType.price" class="control-label lblinput">Price: </label>
                             <div class="controls pull-right">
-                            <s:textfield  name="movieType.price" maxlength="50" size="30"/>
+                                <s:textfield  name="movieType.price" maxlength="5" size="5"/>                                
                             </div>
                         </div>
-                    </td>
-                </tr>  
-                <tr>                      
+                    </td>	
+                </tr>
+                
+                <tr>
                     <td colspan="2">
                         <div class="control-group">
                             <label for="movieType.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                            <s:textarea label="Stock" name="movieType.stock" cols="40" rows="10"/>                            
+                                <s:textarea name="movieType.stock" cols="40" rows="10"/>
                             </div>
                         </div>
                     </td>	
-                </tr>	               
+                </tr>
+               
+                
                 <tr>
                     <td colspan="2">
                         <div class="modal-footer">  

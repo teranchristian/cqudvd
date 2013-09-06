@@ -123,7 +123,23 @@
         <action name="buyMovies" class="controller.MovieController" method="listBuy" >
             <result name="success" type="tiles">buyList</result>
         </action>
+        <action name="editBuy" class="controller.MovieController" method="editBuy" >
+            <result name="success" type="tiles">editBuy</result>
+        </action>
+        <action name="updateBuy" class="controller.MovieController" method="updateBuy" >
+            <result name="success" type="redirect">movies/buyMovies</result>
+            <result name="fail" type="tiles">editBuy</result>
+        </action> 
         
+        <action name="addBuy" class="controller.MovieController" method="addBuy" >
+            <result name="success" type="tiles">addBuy</result>
+        </action>
+        <action name="insertBuy" class="controller.MovieController" method="insertBuy" >
+            <result name="success" type="tiles">addMovie</result>
+        </action>
+        <action name="deleteBuy" class="controller.MovieController" method="deleteBuy" >
+            <result name="success" type="redirect">movies/buyMovies</result>
+        </action>
          
     </package>
 </struts>
