@@ -7,7 +7,8 @@
                     required: true 
                 },
                 "movie.releaseYear": {
-                    required: true 
+                    required: true,
+                    digits: true
                 },
                 "movie.description": {
                     required: true 
@@ -60,7 +61,17 @@
                             </div>
                         </div>
                     </td>
-                </tr>  
+                </tr> 	
+                <tr>
+                    <td colspan="2">
+                        <div class="control-group">
+                            <label for="movie.genreId" class="control-label lblinput">Genres :   </label>
+                            <div class="controls pull-right">
+                                <s:select name="movie.genreId"  label="movie.genreId"  list="%{listGenre}" listKey="genreId" listValue="genre" value="%{movie.genreId}"/>
+                            </div>
+                        </div>
+                    </td>	
+                </tr> 
                 <tr>  
                     <td colspan="2">
                         <div class="control-group">

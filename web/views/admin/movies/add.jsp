@@ -7,12 +7,19 @@
                     required: true 
                 },
                 "movie.releaseYear": {
-                    required: true 
+                    required: true,
+                    digits: true
                 },
                 "movie.description": {
                     required: true 
+                },
+                "userImage": {
+                    required: true,
+                    accept: "png|jpe?g|gif", 
+                    filesize: 1048576
                 }
             },
+             messages: { "userImage": "File must be JPG, GIF or PNG, less than 1MB" },
             highlight: function(element) {
                 $(element).closest('.control-group').removeClass('success').addClass('error');
             },
@@ -55,6 +62,16 @@
                             <label for="movie.movieTitle" class="control-label lblinput">Title :   </label>
                             <div class="controls pull-right">
                                 <s:textfield  name="movie.movieTitle" maxlength="50" size="30"/>                                
+                            </div>
+                        </div>
+                    </td>	
+                </tr>	
+                <tr>
+                    <td colspan="2">
+                        <div class="control-group">
+                            <label for="movie.genreId" class="control-label lblinput">Genres :   </label>
+                            <div class="controls pull-right">
+                                <s:select name="movie.genreId"  label="movie.genreId"  list="%{listGenre}" listKey="genreId" listValue="genre" value="%{movie.genreId}"/>
                             </div>
                         </div>
                     </td>	
