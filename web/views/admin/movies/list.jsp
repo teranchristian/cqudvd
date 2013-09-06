@@ -24,8 +24,8 @@
             <table border="0" cellpadding="1px" cellspacing="0px"  nowrap="nowrap"  id="example" class="table-bordered data-table table table-hover" style="border: 1px solid black;">
                 <thead>
                     <tr>
-                        <th class="mainlistheading" style="width: 5%" >
-                            ID
+                        <th class="mainlistheading" style="width: 11%" >
+                            MOVIE COVER
                         </th>
                         <th class="mainlistheading" align="left" valign="center">
                             TITLE
@@ -48,7 +48,7 @@
                     <s:iterator value="%{list}">
                         <tr>
                             <td>
-                                <s:property value="movieId"/>
+                               <img src="${pageContext.request.contextPath}/public/moviepic/<s:property value="movieId"/>.png"> 
                             </td>
                             <td>
                                 <s:property value="movieTitle"/>                       
