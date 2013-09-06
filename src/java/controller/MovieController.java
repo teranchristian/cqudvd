@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
+import model.entities.MoviesType;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -26,8 +27,17 @@ public class MovieController  extends ActionSupport implements
    private String msg;
    private MoviesDAO moviesDAO= new MoviesDAOImpl();
    ArrayList<Movies> list = new ArrayList();
+   ArrayList<MoviesType> listType = new ArrayList();
    ArrayList<Genres> listGenre = new ArrayList();
    String itemId;
+
+    public ArrayList<MoviesType> getListType() {
+        return listType;
+    }
+
+    public void setListType(ArrayList<MoviesType> listType) {
+        this.listType = listType;
+    }
    private File userImage;
    private String userImageContentType;
    private String userImageFileName; 
@@ -173,6 +183,13 @@ public class MovieController  extends ActionSupport implements
  
     }
 
+    
+    // -----------------------------------Buy Movies------------------------
+    public String listBuy(){
+        listType = moviesDAO.listBuy();
+        return "success";
+    }
+    
         
     }
     

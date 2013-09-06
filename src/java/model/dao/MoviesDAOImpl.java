@@ -7,6 +7,7 @@ package model.dao;
 import java.util.ArrayList;
 import model.entities.Movies;
 import java.util.ArrayList;
+import model.entities.MoviesType;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.Query;
@@ -94,6 +95,13 @@ public class MoviesDAOImpl implements MoviesDAO {
             }
             return false;
         }
+    }
+
+    @Override
+    public ArrayList<MoviesType> listBuy() {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            return (ArrayList<MoviesType>)session.createQuery("from MoviesType m where m.movieType='BUY'").list();
     }
 
     
