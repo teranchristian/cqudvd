@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import model.entities.Genres;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import model.dao.GenresDAO;
+import model.dao.GenresDaoImpl;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
 import org.apache.commons.io.FileUtils;
@@ -73,8 +75,18 @@ public class MovieController  extends ActionSupport implements
     
     
     public String addMovie(){
+        GenresDAO g= new GenresDaoImpl();
+        listGenre = g.list();
         return "success";
     }        
+
+    public ArrayList<Genres> getListGenre() {
+        return listGenre;
+    }
+
+    public void setListGenre(ArrayList<Genres> listGenre) {
+        this.listGenre = listGenre;
+    }
     
     public String insertMovie(){
         int movieId =moviesDAO.insert(movie);
