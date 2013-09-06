@@ -13,6 +13,7 @@
         <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/validate.js"></script>
         <link rel="stylesheet" href="http://sydneyapps.cloudservices.asia/auscommjobs/public/css/jquery.css" />
         <script src="http://sydneyapps.cloudservices.asia/auscommjobs/public/js/jquery-ui.js"></script>
+        <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/hoverMenu.js"></script>
     </head>
     <body>
         <tiles:insertAttribute name="userLogin" />
