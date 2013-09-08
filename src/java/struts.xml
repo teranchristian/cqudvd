@@ -9,9 +9,6 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
         </result-types>
 
-        <global-results>
-            <result name="welcome" type="tiles">welcome</result>
-        </global-results>
         
         <action name="addUser" class="controller.UserController" method="addUser" >
             <result name="success" type="tiles">add</result>
@@ -30,9 +27,10 @@
         </action>
         <action name="index" class="controller.UserController" method="welcome" >
             <result name="admin" type="tiles">admin</result>   
-            <result name="user" type="tiles">welcome</result>   
+            <result name="user" type="redirect">welcome</result>   
         </action>
-        <action name="*" method="{1}" class="controller.ActionLinkController">                        
+        <action name="*" method="{1}" class="controller.ActionLinkController">    
+            <result name="welcome" type="tiles">welcome</result>                    
             <result name="login" type="tiles">login</result>
             <result name="signUp" type="tiles">signUp</result>
         </action>                
