@@ -8,7 +8,7 @@
       <generator class="identity"/>
     </id>
     <property name="movieType" type="string">
-      <column length="80" name="MOVIE_TYPE" not-null="true" unique="true"/>
+      <column length="80" name="MOVIE_TYPE" not-null="true" unique="false"/>
     </property>
     <property name="price" type="double">
       <column name="PRICE" not-null="true" precision="52" scale="0"/>

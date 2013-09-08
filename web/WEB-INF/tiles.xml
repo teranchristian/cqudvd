@@ -88,4 +88,19 @@
         <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/movies/update.jsp"/>          
     </definition>
+    <definition name="buyList" extends="baseLayout">
+        <put-attribute name="title"  value="Movie Menu"/>
+        <put-attribute name="menu" value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/listBuy.jsp"/>          
+    </definition>
+    <definition name="editBuy" extends="baseLayout">
+        <put-attribute name="title"  value="Edit Buy Catagories"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/updateBuy.jsp"/>          
+    </definition>
+    <definition name="addBuy" extends="baseLayout">
+        <put-attribute name="title"  value="Add Buy Catagories"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/addBuy.jsp"/>          
+    </definition>
 </tiles-definitions>

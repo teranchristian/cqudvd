@@ -15,6 +15,7 @@ import model.dao.GenresDAO;
 import model.dao.GenresDaoImpl;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
+import model.entities.MoviesType;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -25,17 +26,43 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class MovieController extends ActionSupport implements
         ServletRequestAware {
+   private Movies movie=new Movies();
+   private String msg;
+   private MoviesDAO moviesDAO= new MoviesDAOImpl();
+   ArrayList<Movies> list = new ArrayList();
+   ArrayList<MoviesType> listType = new ArrayList();
+   ArrayList<Genres> listGenre = new ArrayList();
+   String itemId;
+    private MoviesType movieType=new MoviesType();
+    private ArrayList<Movies> listForBuy=new ArrayList();
 
-    private Movies movie = new Movies();
-    private String msg;
-    private MoviesDAO moviesDAO = new MoviesDAOImpl();
-    ArrayList<Movies> list = new ArrayList();
-    ArrayList<Genres> listGenre = new ArrayList();
-    String itemId;
-    private File userImage;
-    private String userImageContentType;
-    private String userImageFileName;
-    private HttpServletRequest servletRequest;
+    public ArrayList<Movies> getListForBuy() {
+        return listForBuy;
+    }
+
+    public void setListForBuy(ArrayList<Movies> listForBuy) {
+        this.listForBuy = listForBuy;
+    }
+
+    public MoviesType getMovieType() {
+        return movieType;
+    }
+
+    public void setMovieType(MoviesType movieType) {
+        this.movieType = movieType;
+    }
+
+    public ArrayList<MoviesType> getListType() {
+        return listType;
+    }
+
+    public void setListType(ArrayList<MoviesType> listType) {
+        this.listType = listType;
+    }
+   private File userImage;
+   private String userImageContentType;
+   private String userImageFileName; 
+   private HttpServletRequest servletRequest;
 
     public String getItemId() {
         return itemId;
@@ -197,6 +224,59 @@ public class MovieController extends ActionSupport implements
     @Override
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
+}
+    
+    // -----------------------------------Buy Movies------------------------
+    public String listBuy(){
+        listType = moviesDAO.listBuy();
+        return "success";
+    }
+    
+    public String editBuy() {
+        movieType = moviesDAO.buyDetail(itemId);
+        
+        return "success";
+    }
+      
+    public String updateBuy() {
+      int movieTypeId = moviesDAO.updateBuy(movieType);
+        if (movieTypeId != 0) {
+        return "success";}
+        else{
+            msg="something is not right";
+            return "fail";
+        }
+    }
+    
+     public String addBuy(){
+         listForBuy = moviesDAO.listForBuy();
+         return "success";
+     }
+     
+     public String insertBuy(){
+         movie=moviesDAO.movieDetail(""+movie.getMovieId());
+        movieType.setMovie(movie);
+        movieType.setMovieType("BUY");
+          int movieTypeId = moviesDAO.insertBuy(movieType);
+          if(movieTypeId!=0){
+              msg="Movies has created into Buy Categories";
+          }else{
+              msg="Something went wrong";
+          }
+         return "success";
+     }
+    
+     public String deleteBuy() {
+
+        if (moviesDAO.deleteBuy(itemId)) {
+            msg = "movie deleted from Buy";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
 
     }
+    
+    
+     
 }
