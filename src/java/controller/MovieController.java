@@ -132,8 +132,17 @@ public class MovieController extends ActionSupport implements
             try {
                 String filePath = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");
                 String buildPath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");
+                
                 File fileToCreateBuild = new File(buildPath, movieId + ".png");
+                if (fileToCreateBuild.exists()){
+                   fileToCreateBuild.delete();
+                }
+                   
                 File fileToCreate = new File(filePath, movieId + ".png");
+                if (fileToCreate.exists()){
+                   fileToCreate.delete();
+                }
+                   
                 System.out.println("\n\nthe path is \n" + fileToCreateBuild);
                 FileUtils.copyFile(this.userImage, fileToCreate);
                 FileUtils.copyFile(this.userImage, fileToCreateBuild);
