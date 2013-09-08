@@ -17,34 +17,32 @@ import org.hibernate.Query;
  * @author cardven
  */
 public class MoviesDAOImpl implements MoviesDAO {
+
     private Session session;
     private Transaction transaction;
     private String updateId;
-    
-    
-    
+
     @Override
     public ArrayList<Movies> list() {
-    try{
-             session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            return (ArrayList<Movies>)session.createQuery("from Movies where active='T'").list();
-            
-        }
-        catch(Exception e){
+            return (ArrayList<Movies>) session.createQuery("from Movies where active='T'").list();
+
+        } catch (Exception e) {
             return null;
-        }  
+        }
     }
 
     @Override
     public int insert(Movies movie) {
-     try {
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             session.save(movie);
-            session.flush(); 
+            session.flush();
             transaction.commit();
-            
+
             return movie.getMovieId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -52,16 +50,15 @@ public class MoviesDAOImpl implements MoviesDAO {
             }
             return 0;
         }
-        
+
     }
-    
+
     @Override
     public Movies movieDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         return (Movies) session.createQuery("from Movies where movieId =" + id).uniqueResult();
     }
-    
 
     @Override
     public int updateMovie(Movies movie) {
@@ -69,7 +66,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             session.update(movie);
-            session.flush(); 
+            session.flush();
             transaction.commit();
             return movie.getMovieId();
         } catch (Exception e) {
@@ -79,10 +76,10 @@ public class MoviesDAOImpl implements MoviesDAO {
             return 0;
         }
     }
-    
+
     @Override
     public boolean delete(String id) {
-    try {
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             Query update = session.createQuery("update Movies  set active ='F'  where movieId =" + id);
@@ -99,28 +96,28 @@ public class MoviesDAOImpl implements MoviesDAO {
 
     @Override
     public ArrayList<MoviesType> listBuy() {
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            return (ArrayList<MoviesType>)session.createQuery("from MoviesType m where m.movieType='BUY' AND m.active='T'").list();
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        return (ArrayList<MoviesType>) session.createQuery("from MoviesType m where m.movieType='BUY' AND m.active='T'").list();
     }
 
     @Override
     public MoviesType buyDetail(String id) {
-    session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         return (MoviesType) session.createQuery("from MoviesType where movieTypeId =" + id).uniqueResult();
     }
 
     @Override
     public int updateBuy(MoviesType movieType) {
-    try {
+        try {
             int id = movieType.getMovieTypeId();
-        
+
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
-            Query update = session.createQuery("update MoviesType u set u.price = "+movieType.getPrice()+",u.stock="+movieType.getStock() + " where u.movieTypeId =" + id);
+            Query update = session.createQuery("update MoviesType u set u.price = " + movieType.getPrice() + ",u.stock=" + movieType.getStock() + " where u.movieTypeId =" + id);
             update.executeUpdate();
-            session.flush(); 
+            session.flush();
             transaction.commit();
             return movieType.getMovieTypeId();
         } catch (Exception e) {
@@ -133,24 +130,25 @@ public class MoviesDAOImpl implements MoviesDAO {
 
     @Override
     public int insertBuy(MoviesType movieType) {
-    try {
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             session.save(movieType);
-            session.flush(); 
+            session.flush();
             transaction.commit();
-            
+
             return movieType.getMovieTypeId();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             return 0;
-        }}
+        }
+    }
 
     @Override
     public boolean deleteBuy(String id) {
-    try {
+        try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
             Query update = session.createQuery("update MoviesType  set active ='F'  where movieTypeId =" + id);
@@ -167,16 +165,35 @@ public class MoviesDAOImpl implements MoviesDAO {
 
     @Override
     public ArrayList<Movies> listForBuy() {
-    try{
-             session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            return (ArrayList<Movies>)session.createQuery("SELECT distinct mt from MoviesType as m right outer join m.movie as mt where (m.movieType is Null OR m.movieType='RENT' )and mt.active='T'").list();
-            
-        }
-        catch(Exception e){
+            return (ArrayList<Movies>) session.createQuery("SELECT distinct mt from MoviesType as m right outer join m.movie as mt where (m.movieType is Null OR m.movieType='RENT' )and mt.active='T'").list();
+
+        } catch (Exception e) {
             return null;
-        }  
+        }
     }
 
-    
+    @Override
+    public ArrayList<Movies> searchTitle(String search) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        return (ArrayList<Movies>) session.createQuery("from Movies where active='T' and lower(Description) like'%"+search+"%'").list();
+    }
+
+    @Override
+    public ArrayList<Movies> searchGenre(String search) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        return (ArrayList<Movies>) session.createQuery("from Movies m where m.active='T' and lower(m.genre.genre) like'%"+search+"%'").list();
+    }
+
+    @Override
+    public ArrayList<Movies> searchYear(String search) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        return (ArrayList<Movies>) session.createQuery("from Movies where active='T' and releaseYear ="+search).list();
+         
+    }
 }

@@ -22,6 +22,9 @@ public interface MoviesDAO {
     public int updateBuy(MoviesType movieType);
     public int insertBuy(MoviesType movieType);
     public boolean deleteBuy(String id);
+    public ArrayList<Movies> searchTitle(String search);
+    public ArrayList<Movies> searchGenre(String search);
+    public ArrayList<Movies> searchYear(String search);
     
     
     

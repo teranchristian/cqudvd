@@ -17,6 +17,15 @@ public class Movies  implements java.io.Serializable {
      private Integer releaseYear;
      private String description;
      private String active;
+     private Genres genre;
+
+    public Genres getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genres genre) {
+        this.genre = genre;
+    }
 
     public Movies() {
     }

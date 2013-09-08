@@ -22,5 +22,6 @@
     <property name="active" type="string" insert="false" update="false">
       <column length="1" name="ACTIVE"/>
     </property>
+    <many-to-one name="genre" class="model.entities.Genres" column="GENRE_ID" cascade="all" unique="false" insert="false" update="false" />
   </class>
 </hibernate-mapping>
