@@ -35,7 +35,7 @@
                                     <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies">Add Movies</a></li>
                                     <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies/buyMovies">Buy Categories</a></li>
                                     <li class="divider"></li>
-                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies">Rent Categories</a></li>
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies/listRentMovies">Rent Categories</a></li>
                                     <li class="divider"></li>
                                 </ul>
                             </li>
