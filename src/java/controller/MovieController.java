@@ -37,6 +37,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     String searchInput;
     private MoviesType movieType = new MoviesType();
     private ArrayList<Movies> listForBuy = new ArrayList();
+    private ArrayList<Movies> rentAvailable = new ArrayList();    
     private File userImage;
     private String userImageContentType;
     private String userImageFileName;
@@ -137,7 +138,14 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     public void setMovie(Movies movie) {
         this.movie = movie;
     }
+    
+    public ArrayList<Movies> getRentAvailable() {
+        return rentAvailable;
+    }
 
+    public void setRentAvailable(ArrayList<Movies> rentAvailable) {
+        this.rentAvailable = rentAvailable;
+    }
     public void setListGenre(ArrayList<Genres> listGenre) {
         this.listGenre = listGenre;
     }
@@ -249,7 +257,6 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     public String editBuy() {
         movieType = moviesDAO.buyDetail(itemId);
-
         return "success";
     }
 
@@ -291,6 +298,56 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     }
 
+    
+    
+    // -----------------------------------Rent Movies------------------------
+    public String listRentMovies() {
+        listType = moviesDAO.listRent();
+        return "success";
+    }
+
+    public String editRentList() {
+        movieType = moviesDAO.editTypeDetail(itemId);
+        return "success";
+    }
+    
+    public String updateRentList() {
+        int movieTypeId = moviesDAO.updateRentList(movieType);
+        if (movieTypeId != 0) {
+            return "success";
+        } else {
+            msg = "something is not right";
+            return "fail";
+        }
+    }
+    
+    public String addRentList() {
+        rentAvailable = moviesDAO.rentAvailable();
+        return "success";
+    }
+
+    public String insertRentMovie() {
+        movie = moviesDAO.movieDetail("" + movie.getMovieId());
+        movieType.setMovie(movie);
+        movieType.setMovieType("RENT");
+        int movieTypeId = moviesDAO.insertRentMovie(movieType);
+        if (movieTypeId != 0) {
+            msg = "Movies has added in rent Categories";
+        } else {
+            msg = "Something went wrong";
+        }
+        return "success";
+    }
+    
+    public String deleteRentItem() {
+        if (moviesDAO.deleteRentItem(itemId)) {
+            msg = "This movie has been removed from List";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+
+    }
     // -----------------------------------Search Movies------------------------     
     public String searchMovie() {
         if (searchType.endsWith("T")){
