@@ -196,4 +196,86 @@ public class MoviesDAOImpl implements MoviesDAO {
         return (ArrayList<Movies>) session.createQuery("from Movies where active='T' and releaseYear ="+search).list();
          
     }
+
+    @Override
+    public ArrayList<MoviesType> listRent() {
+        
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        return (ArrayList<MoviesType>) session.createQuery("from MoviesType m where m.movieType='RENT' AND m.active='T'").list();
+    }
+    @Override
+    public MoviesType editTypeDetail(String id) {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = session.beginTransaction();
+        return (MoviesType) session.createQuery("from MoviesType where movieTypeId =" + id).uniqueResult();
+    }
+
+    @Override
+    public int updateRentList(MoviesType movieType) {
+            try {
+            int id = movieType.getMovieTypeId();
+
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            Query update = session.createQuery("update MoviesType rm set rm.price = " + movieType.getPrice() + ",rm.stock=" + movieType.getStock() + " where rm.movieTypeId =" + id);
+            update.executeUpdate();
+            session.flush();
+            transaction.commit();
+            return movieType.getMovieTypeId();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return 0;
+        }
+    }
+
+    @Override
+    public ArrayList<Movies> rentAvailable() {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            return (ArrayList<Movies>) session.createQuery("SELECT distinct mt from MoviesType as m right outer join m.movie as mt where (m.movieType is Null OR m.movieType='BUY' )and mt.active='T'").list();
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public int insertRentMovie(MoviesType movieType) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.save(movieType);
+            session.flush();
+            transaction.commit();
+
+            return movieType.getMovieTypeId();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return 0;
+        }
+        
+    }
+
+    @Override
+    public boolean deleteRentItem(String id) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            Query update = session.createQuery("update MoviesType  set active ='F'  where movieTypeId =" + id);
+            update.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }        
+    }
 }

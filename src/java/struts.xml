@@ -124,6 +124,8 @@
         <action name="deleteMovie" class="controller.MovieController" method="deleteMovie" >
             <result name="success" type="redirect">movies</result>
         </action>
+        
+        
         <action name="buyMovies" class="controller.MovieController" method="listBuy" >
             <result name="success" type="tiles">buyList</result>
         </action>
@@ -144,6 +146,27 @@
         <action name="deleteBuy" class="controller.MovieController" method="deleteBuy" >
             <result name="success" type="redirect">movies/buyMovies</result>
         </action>
+        
          
+       
+        <action name="listRentMovies" class="controller.MovieController" method="listRentMovies" >
+            <result name="success" type="tiles">listRentMovies</result>
+        </action>
+        <action name="editRentList" class="controller.MovieController" method="editRentList" >
+            <result name="success" type="tiles">editRentList</result>
+        </action>
+        <action name="updateRentList" class="controller.MovieController" method="updateRentList" >
+            <result name="success" type="redirect">movies/listRentMovies</result>
+            <result name="fail" type="tiles">editRentList</result>
+        </action>
+        <action name="addRentList" class="controller.MovieController" method="addRentList" >
+            <result name="success" type="tiles">addRentList</result>
+        </action>
+        <action name="insertRentMovie" class="controller.MovieController" method="insertRentMovie" >
+            <result name="success" type="tiles">insertRentMovie</result>
+        </action>
+        <action name="deleteRentItem" class="controller.MovieController" method="deleteRentItem" >
+            <result name="success" type="redirect">movies/listRentMovies</result>
+        </action>
     </package>
 </struts>

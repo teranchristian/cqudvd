@@ -108,4 +108,25 @@
         <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/movies/addBuy.jsp"/>          
     </definition>
+    
+    <definition name="listRentMovies" extends="baseLayout">
+        <put-attribute name="title"  value="Rent Movie Menu"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/listRent.jsp"/>          
+    </definition>
+    <definition name="editRentList" extends="baseLayout">
+        <put-attribute name="title"  value="Edit Rent Catagories List"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/updateRent.jsp"/>          
+    </definition>
+    <definition name="addRentList" extends="baseLayout">
+        <put-attribute name="title"  value="Add Rent Catagories"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/addRent.jsp"/>          
+    </definition>
+    <definition name="insertRentMovie" extends="baseLayout">
+        <put-attribute name="title"  value="Add Rent Catagories"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/movies/addRent.jsp"/>          
+    </definition>
 </tiles-definitions>
