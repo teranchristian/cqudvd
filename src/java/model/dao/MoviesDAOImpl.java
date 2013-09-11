@@ -179,7 +179,7 @@ public class MoviesDAOImpl implements MoviesDAO {
     public ArrayList<Movies> searchTitle(String search) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        return (ArrayList<Movies>) session.createQuery("from Movies where active='T' and lower(Description) like'%"+search+"%'").list();
+        return (ArrayList<Movies>) session.createQuery("from Movies where active='T' and lower(movieTitle) like'%"+search+"%'").list();
     }
 
     @Override
