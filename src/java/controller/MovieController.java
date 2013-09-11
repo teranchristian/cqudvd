@@ -128,7 +128,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     public void setMsg(String msg) {
         this.msg = msg;
-    }   
+    }
 
     public Movies getMovie() {
         return movie;
@@ -141,15 +141,18 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     public void setListGenre(ArrayList<Genres> listGenre) {
         this.listGenre = listGenre;
     }
-     @Override
+
+    @Override
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
     }
     //---End getters-setters
-      public String list() {
+
+    public String list() {
         list = moviesDAO.list();
         return "success";
     }
+
     public String addMovie() {
         GenresDAO g = new GenresDaoImpl();
         listGenre = g.list();
@@ -158,7 +161,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     public ArrayList<Genres> getListGenre() {
         return listGenre;
-    }    
+    }
 
     public String insertMovie() {
         int movieId = moviesDAO.insert(movie);
@@ -239,7 +242,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
         }
         return "success";
 
-    }   
+    }
 
     // -----------------------------------Buy Movies------------------------
     public String listBuy() {
@@ -293,12 +296,15 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     // -----------------------------------Search Movies------------------------     
     public String searchMovie() {
-        if (searchType.endsWith("T")){
-            list =moviesDAO.searchTitle(searchInput.toLowerCase());
-        }else if (searchType.endsWith("G")){
-            list =moviesDAO.searchGenre(searchInput.toLowerCase());
-        }else{
-            list =moviesDAO.searchYear(searchInput.toLowerCase());
+
+        if (!searchInput.equals("")) {
+            if (searchType.endsWith("T")) {
+                list = moviesDAO.searchTitle(searchInput.toLowerCase());
+            } else if (searchType.endsWith("G")) {
+                list = moviesDAO.searchGenre(searchInput.toLowerCase());
+            } else {
+                list = moviesDAO.searchYear(searchInput.toLowerCase());
+            }
         }
         return "success";
 
