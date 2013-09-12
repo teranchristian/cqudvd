@@ -7,6 +7,7 @@ package model.dao;
 import java.util.ArrayList;
 import model.entities.Movies;
 import java.util.ArrayList;
+import model.entities.MoviesBuy;
 import model.entities.MoviesType;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -95,31 +96,31 @@ public class MoviesDAOImpl implements MoviesDAO {
     }
 
     @Override
-    public ArrayList<MoviesType> listBuy() {
+    public ArrayList<MoviesBuy> listBuy() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        return (ArrayList<MoviesType>) session.createQuery("from MoviesType m where m.movieType='BUY' AND m.active='T'").list();
+        return (ArrayList<MoviesBuy>) session.createQuery("from MoviesBuy m where m.active='T'").list();
     }
 
     @Override
-    public MoviesType buyDetail(String id) {
+    public MoviesBuy buyDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
-        return (MoviesType) session.createQuery("from MoviesType where movieTypeId =" + id).uniqueResult();
+        return (MoviesBuy) session.createQuery("from MoviesBuy where moviesBuyId =" + id).uniqueResult();
     }
 
     @Override
-    public int updateBuy(MoviesType movieType) {
+    public int updateBuy(MoviesBuy movieBuy) {
         try {
-            int id = movieType.getMovieTypeId();
+            int id = movieBuy.getMoviesBuyId();
 
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
-            Query update = session.createQuery("update MoviesType u set u.price = " + movieType.getPrice() + ",u.stock=" + movieType.getStock() + " where u.movieTypeId =" + id);
+            Query update = session.createQuery("update MoviesBuy u set u.price = " + movieBuy.getPrice() + ",u.stock=" + movieBuy.getStock() + " where u.moviesBuyId =" + id);
             update.executeUpdate();
             session.flush();
             transaction.commit();
-            return movieType.getMovieTypeId();
+            return movieBuy.getMoviesBuyId();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -129,15 +130,15 @@ public class MoviesDAOImpl implements MoviesDAO {
     }
 
     @Override
-    public int insertBuy(MoviesType movieType) {
+    public int insertBuy(MoviesBuy movieBuy) {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
-            session.save(movieType);
+            session.save(movieBuy);
             session.flush();
             transaction.commit();
 
-            return movieType.getMovieTypeId();
+            return movieBuy.getMoviesBuyId();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -151,7 +152,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
-            Query update = session.createQuery("update MoviesType  set active ='F'  where movieTypeId =" + id);
+            Query update = session.createQuery("update MoviesBuy  set active ='F'  where moviesBuyId =" + id);
             update.executeUpdate();
             transaction.commit();
             return true;
@@ -168,7 +169,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            return (ArrayList<Movies>) session.createQuery("SELECT distinct mt from MoviesType as m right outer join m.movie as mt where (m.movieType is Null OR m.movieType='RENT' )and mt.active='T'").list();
+            return (ArrayList<Movies>) session.createQuery("Select m from MoviesBuy as mb right join mb.movie as m where m.active = 'T' AND mb.movie is Null").list();
 
         } catch (Exception e) {
             return null;

@@ -249,55 +249,6 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     }   
 
-    // -----------------------------------Buy Movies------------------------
-    public String listBuy() {
-        listType = moviesDAO.listBuy();
-        return "success";
-    }
-
-    public String editBuy() {
-        movieType = moviesDAO.buyDetail(itemId);
-        return "success";
-    }
-
-    public String updateBuy() {
-        int movieTypeId = moviesDAO.updateBuy(movieType);
-        if (movieTypeId != 0) {
-            return "success";
-        } else {
-            msg = "something is not right";
-            return "fail";
-        }
-    }
-
-    public String addBuy() {
-        listForBuy = moviesDAO.listForBuy();
-        return "success";
-    }
-
-    public String insertBuy() {
-        movie = moviesDAO.movieDetail("" + movie.getMovieId());
-        movieType.setMovie(movie);
-        movieType.setMovieType("BUY");
-        int movieTypeId = moviesDAO.insertBuy(movieType);
-        if (movieTypeId != 0) {
-            msg = "Movies has created into Buy Categories";
-        } else {
-            msg = "Something went wrong";
-        }
-        return "success";
-    }
-
-    public String deleteBuy() {
-        if (moviesDAO.deleteBuy(itemId)) {
-            msg = "movie deleted from Buy";
-        } else {
-            msg = "Somethings goes worng, please try it again";
-        }
-        return "success";
-
-    }
-
     
     
     // -----------------------------------Rent Movies------------------------

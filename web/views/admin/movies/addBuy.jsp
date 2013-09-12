@@ -70,9 +70,9 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.price" class="control-label lblinput">Price: </label>
+                            <label for="movieBuy.price" class="control-label lblinput">Price: </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movieType.price" maxlength="5" size="5"/>                                
+                                <s:textfield  name="movieBuy.price" maxlength="5" size="5"/>                                
                             </div>
                         </div>
                     </td>	
@@ -81,9 +81,9 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.stock" class="control-label lblinput">Stock :   </label>
+                            <label for="movieBuy.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                                <s:textarea name="movieType.stock" cols="40" rows="10"/>
+                                <s:textarea name="movieBuy.stock" cols="40" rows="10"/>
                             </div>
                         </div>
                     </td>	

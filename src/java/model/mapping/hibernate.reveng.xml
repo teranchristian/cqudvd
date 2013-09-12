@@ -8,6 +8,7 @@
     <table-filter match-name="GENRES"/>
     <table-filter match-name="MOVIES"/>
     <table-filter match-name="MOVIES_TYPE"/>
+    <table-filter match-name="MOVIES_BUY"/>
 </hibernate-reverse-engineering>
 
 

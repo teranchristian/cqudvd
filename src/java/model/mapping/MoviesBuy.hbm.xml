@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/09/2013 3:26:34 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="model.entities.MoviesBuy" schema="CQU" table="MOVIES_BUY">
+    <id name="moviesBuyId" type="int">
+      <column name="MOVIES_BUY_ID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="price" type="double">
+      <column name="PRICE" not-null="true" precision="52" scale="0"/>
+    </property>
+    <property name="stock" type="java.lang.Integer">
+      <column name="STOCK"/>
+    </property>
+    
+    <many-to-one name="movie" class="model.entities.Movies" column="MOVIE_ID" cascade="all" unique="true"  />
+    <property name="active" type="string" insert="false" update="false">
+      <column length="1" name="ACTIVE"/>
+    </property>
+  </class>
+</hibernate-mapping>
