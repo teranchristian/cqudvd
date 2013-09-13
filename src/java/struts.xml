@@ -168,5 +168,8 @@
         <action name="deleteRentItem" class="controller.BuyAndRentController" method="deleteRentItem" >
             <result name="success" type="redirect">movies/listRentMovies</result>
         </action>
+        <action name="stockReport" class="controller.ReportController" method="stockReport" >
+            <result name="success" type="tiles">stockReport</result>
+        </action>
     </package>
 </struts>
