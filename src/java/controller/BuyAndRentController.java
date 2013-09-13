@@ -120,7 +120,7 @@ public class BuyAndRentController {
     }
 
     public String editBuy() {
-        movieBuy = moviesDAO.buyDetail(itemId);
+        movieBuy = moviesDAO.editBuyDetail(itemId);
         return "success";
     }
 

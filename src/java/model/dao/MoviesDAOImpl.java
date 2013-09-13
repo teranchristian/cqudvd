@@ -103,7 +103,7 @@ public class MoviesDAOImpl implements MoviesDAO {
     }
 
     @Override
-    public MoviesBuy buyDetail(String id) {
+    public MoviesBuy editBuyDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         return (MoviesBuy) session.createQuery("from MoviesBuy where moviesBuyId =" + id).uniqueResult();
