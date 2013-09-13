@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import model.entities.Movies;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
-import model.entities.MoviesType;
 /**
  *
  * @author cardven
