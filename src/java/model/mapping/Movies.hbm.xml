@@ -10,9 +10,6 @@
     <property name="movieTitle" type="string">
       <column length="80" name="MOVIE_TITLE" not-null="true" unique="true"/>
     </property>
-    <property name="genreId" type="int">
-      <column name="GENRE_ID" not-null="true"/>
-    </property>
     <property name="releaseYear" type="java.lang.Integer">
       <column name="RELEASE_YEAR"/>
     </property>
@@ -21,6 +18,9 @@
     </property>
     <property name="active" type="string" insert="false" update="false">
       <column length="1" name="ACTIVE"/>
+    </property>
+    <property name="genreId" type="java.lang.Integer">
+      <column  name="GENRE_ID" not-null="true" />
     </property>
     <many-to-one name="genre" class="model.entities.Genres" column="GENRE_ID" cascade="all" unique="false" insert="false" update="false" />
   </class>

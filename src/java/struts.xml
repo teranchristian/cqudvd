@@ -37,7 +37,11 @@
         <action name="searchMovie" class="controller.MovieController" method="searchMovie" >
             <result name="success" type="tiles">searchMovie</result>    
         </action>
+        <action name="movieDetails" class="controller.MovieController" method="movieDetails" >
+            <result name="success" type="tiles">movieDetails</result>    
+        </action>
                   
+                                      
         
                           
     </package>

@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>
             <tiles:insertAttribute name="title" ignore="true" />
@@ -10,8 +13,8 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.js"></script>
         <link type="text/css" href="${pageContext.request.contextPath}/public/css/style.css"  rel="stylesheet"/>                   
         <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/validate.js"></script>
-        <link rel="stylesheet" href="http://sydneyapps.cloudservices.asia/auscommjobs/public/css/jquery.css" />
-        <script src="http://sydneyapps.cloudservices.asia/auscommjobs/public/js/jquery-ui.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/jquery.css" />
+        <script src="${pageContext.request.contextPath}/public/js/jquery-ui.js"></script>
         <script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/hoverMenu.js"></script>
     </head>
     <body>

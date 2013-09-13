@@ -9,16 +9,15 @@ import java.io.File;
 import model.entities.Movies;
 import java.util.ArrayList;
 import model.entities.Genres;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import model.dao.GenresDAO;
 import model.dao.GenresDaoImpl;
 import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
-import model.entities.MoviesType;
+import model.entities.MoviesBuy;
+import model.entities.MoviesRent;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
@@ -30,14 +29,14 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     private String msg;
     private MoviesDAO moviesDAO = new MoviesDAOImpl();
     ArrayList<Movies> list = new ArrayList();
-    ArrayList<MoviesType> listType = new ArrayList();
     ArrayList<Genres> listGenre = new ArrayList();
+    private MoviesBuy movieBuy = new MoviesBuy();
+    private MoviesRent movieRent = new MoviesRent();
     String itemId;
     String searchType;
     String searchInput;
-    private MoviesType movieType = new MoviesType();
     private ArrayList<Movies> listForBuy = new ArrayList();
-    private ArrayList<Movies> rentAvailable = new ArrayList();    
+    private ArrayList<Movies> rentAvailable = new ArrayList();
     private File userImage;
     private String userImageContentType;
     private String userImageFileName;
@@ -57,22 +56,6 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     public void setListForBuy(ArrayList<Movies> listForBuy) {
         this.listForBuy = listForBuy;
-    }
-
-    public MoviesType getMovieType() {
-        return movieType;
-    }
-
-    public void setMovieType(MoviesType movieType) {
-        this.movieType = movieType;
-    }
-
-    public ArrayList<MoviesType> getListType() {
-        return listType;
-    }
-
-    public void setListType(ArrayList<MoviesType> listType) {
-        this.listType = listType;
     }
 
     public String getSearchType() {
@@ -138,7 +121,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     public void setMovie(Movies movie) {
         this.movie = movie;
     }
-    
+
     public ArrayList<Movies> getRentAvailable() {
         return rentAvailable;
     }
@@ -146,6 +129,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     public void setRentAvailable(ArrayList<Movies> rentAvailable) {
         this.rentAvailable = rentAvailable;
     }
+
     public void setListGenre(ArrayList<Genres> listGenre) {
         this.listGenre = listGenre;
     }
@@ -154,6 +138,20 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
     }
+
+    public MoviesBuy getMovieBuy() {
+        return movieBuy;
+    }
+
+    public MoviesRent getMovieRent() {
+        return movieRent;
+    }
+
+    public void setMovieRent(MoviesRent movieRent) {
+        this.movieRent = movieRent;
+    }
+    
+    
     //---End getters-setters
 
     public String list() {
@@ -252,9 +250,6 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     }
 
-    
-    
- 
     // -----------------------------------Search Movies------------------------     
     public String searchMovie() {
 
@@ -269,5 +264,12 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
         }
         return "success";
 
+    }
+
+    public String movieDetails() {
+        movie = moviesDAO.movieDetail(itemId);
+        movieRent = moviesDAO.editRentDetailByMovieId(itemId);
+        movieBuy = moviesDAO.editBuyDetailByMovieId(itemId);
+        return "success";
     }
 }

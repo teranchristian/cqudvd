@@ -22,6 +22,7 @@ public interface MoviesDAO {
     
     public ArrayList<MoviesBuy> listBuy();
     public MoviesBuy editBuyDetail(String id);
+    public MoviesBuy editBuyDetailByMovieId(String id);
     public int updateBuy(MoviesBuy movieBuy);
     public int insertBuy(MoviesBuy movieBuy);
     public boolean deleteBuy(String id);
@@ -29,6 +30,7 @@ public interface MoviesDAO {
     
     public ArrayList<MoviesRent> listRent();
     public MoviesRent editRentDetail(String id);
+    public MoviesRent editRentDetailByMovieId(String id);
     public int updateRentList(MoviesRent movieType);
     public int insertRentMovie(MoviesRent movieRent);
     public boolean deleteRentItem(String id);

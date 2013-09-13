@@ -60,6 +60,10 @@
         <put-attribute name="title"  value="Search"/>
         <put-attribute name="body"   value="/views/search/list.jsp"/>          
     </definition>
+    <definition name="movieDetails" extends="baseLayout">
+        <put-attribute name="title"  value="Movie Details"/>
+        <put-attribute name="body"   value="/views/search/details.jsp"/>          
+    </definition>
     <!-- End Search Movie  -->
     <!-- START (ADMIN) genre  -->
     <definition name="genreList" extends="baseLayout">

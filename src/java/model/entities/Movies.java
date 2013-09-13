@@ -13,11 +13,19 @@ public class Movies  implements java.io.Serializable {
 
      private int movieId;
      private String movieTitle;
-     private int genreId;
      private Integer releaseYear;
      private String description;
      private String active;
      private Genres genre;
+     private Integer genreId;
+
+    public Integer getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(Integer genreId) {
+        this.genreId = genreId;
+    }
 
     public Genres getGenre() {
         return genre;
@@ -31,18 +39,17 @@ public class Movies  implements java.io.Serializable {
     }
 
 	
-    public Movies(int movieId, String movieTitle, int genreId) {
+    public Movies(int movieId, String movieTitle) {
         this.movieId = movieId;
         this.movieTitle = movieTitle;
-        this.genreId = genreId;
     }
-    public Movies(int movieId, String movieTitle, int genreId, Integer releaseYear, String description, String active) {
+    public Movies(int movieId, String movieTitle, Integer releaseYear, String description, String active,int genreId) {
        this.movieId = movieId;
        this.movieTitle = movieTitle;
-       this.genreId = genreId;
        this.releaseYear = releaseYear;
        this.description = description;
        this.active = active;
+       this.genreId = genreId;
     }
    
     public int getMovieId() {
@@ -58,13 +65,6 @@ public class Movies  implements java.io.Serializable {
     
     public void setMovieTitle(String movieTitle) {
         this.movieTitle = movieTitle;
-    }
-    public int getGenreId() {
-        return this.genreId;
-    }
-    
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
     }
     public Integer getReleaseYear() {
         return this.releaseYear;
