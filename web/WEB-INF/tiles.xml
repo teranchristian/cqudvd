@@ -133,4 +133,9 @@
         <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/movies/addRent.jsp"/>          
     </definition>
+    <definition name="stockReport" extends="baseLayout">
+        <put-attribute name="title"  value="Report on DVD stock"/>
+        <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
+        <put-attribute name="body"   value="/views/admin/reports/stockReport.jsp"/>          
+    </definition>
 </tiles-definitions>
