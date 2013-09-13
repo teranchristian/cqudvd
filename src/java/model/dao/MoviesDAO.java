@@ -22,7 +22,7 @@ public interface MoviesDAO {
     public boolean delete(String id);
     
     public ArrayList<MoviesBuy> listBuy();
-    public MoviesBuy buyDetail(String id);
+    public MoviesBuy editBuyDetail(String id);
     public int updateBuy(MoviesBuy movieBuy);
     public int insertBuy(MoviesBuy movieBuy);
     public boolean deleteBuy(String id);
