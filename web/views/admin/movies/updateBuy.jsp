@@ -42,7 +42,7 @@
                 </tr>
             </table>
         <s:form name="form" id="form" action="updateBuy" method="post" theme="simple" >
-            <s:hidden  name="movieType.movieTypeId" />
+            <s:hidden  name="movieBuy.moviesBuyId" />
             <table    nowrap align="center" border="0" cellpadding="6" cellspacing="3"  width="40%">       
                 <tr>
                     <td colspan="2">     
@@ -53,9 +53,9 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.movie.movieTitle" class="control-label lblinput">Movie Name :   </label>
+                            <label for="movieBuy.movie.movieTitle" class="control-label lblinput">Movie Name :   </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movieType.movie.movieTitle" maxlength="50" size="30" readonly="true"/>   
+                                <s:textfield  name="movieBuy.movie.movieTitle" maxlength="50" size="30" readonly="true"/>   
                                 <div id="errorE" class="errorFormat"></div>
                             </div>
                         </div>
@@ -64,9 +64,9 @@
                 <tr>  
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.price" class="control-label lblinput">Price :   </label>
+                            <label for="movieBuy.price" class="control-label lblinput">Price :   </label>
                             <div class="controls pull-right">
-                            <s:textfield  name="movieType.price" maxlength="50" size="30"/>
+                            <s:textfield  name="movieBuy.price" maxlength="50" size="30"/>
                             </div>
                         </div>
                     </td>
@@ -74,9 +74,9 @@
                 <tr>                      
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.stock" class="control-label lblinput">Stock :   </label>
+                            <label for="movieBuy.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                            <s:textarea label="Stock" name="movieType.stock" cols="40" rows="10"/>                            
+                            <s:textfield  name="movieBuy.stock" maxlength="50" size="30"/>                    
                             </div>
                         </div>
                     </td>	
