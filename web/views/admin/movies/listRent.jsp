@@ -35,7 +35,7 @@
                         </th>
                         <th class="mainlistheading" align="left" valign="center">
                             STOCK
-                        </th><th class="mainlistheading" align="left" valign="center">
+                        </th>
                         <th class="mainlistheading" align="left" valign="center">
                             RENTED
                         </th><th class="mainlistheading" style="width: 5%">

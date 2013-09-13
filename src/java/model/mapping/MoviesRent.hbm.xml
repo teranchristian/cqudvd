@@ -13,7 +13,7 @@
     <property name="stock" type="java.lang.Integer">
       <column name="STOCK"/>
     </property>
-    <property name="rented" type="java.lang.Integer">
+    <property name="rented" type="java.lang.Integer" insert="false">
       <column name="RENTED"/>
     </property>
     
