@@ -206,7 +206,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         return (ArrayList<MoviesRent>) session.createQuery("from MoviesRent m where m.active='T'").list();
     }
     @Override
-    public MoviesRent editTypeDetail(String id) {
+    public MoviesRent editRentDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         return (MoviesRent) session.createQuery("from MoviesRent where movieRentId =" + id).uniqueResult();

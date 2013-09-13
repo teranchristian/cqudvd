@@ -168,7 +168,7 @@ public class BuyAndRentController {
     }
 
     public String editRentList() {
-        movieRent = moviesDAO.editTypeDetail(itemId);
+        movieRent = moviesDAO.editRentDetail(itemId);
         return "success";
     }
     
