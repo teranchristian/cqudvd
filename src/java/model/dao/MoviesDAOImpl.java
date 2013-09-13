@@ -206,24 +206,24 @@ public class MoviesDAOImpl implements MoviesDAO {
         return (ArrayList<MoviesRent>) session.createQuery("from MoviesRent m where m.active='T'").list();
     }
     @Override
-    public MoviesRent editTypeDetail(String id) {
+    public MoviesRent editRentDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         return (MoviesRent) session.createQuery("from MoviesRent where movieRentId =" + id).uniqueResult();
     }
 
     @Override
-    public int updateRentList(MoviesRent movieType) {
+    public int updateRentList(MoviesRent movieRent) {
             try {
-            int id = movieType.getMovieRentId();
+            int id = movieRent.getMovieRentId();
 
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();
-            Query update = session.createQuery("update MoviesRent rm set rm.price = " + movieType.getPrice() + ",rm.stock=" + movieType.getStock() + " where rm.movieTypeId =" + id);
+            Query update = session.createQuery("update MoviesRent rm set rm.price = " + movieRent.getPrice() + ",rm.stock=" + movieRent.getStock() +",rm.rented="+movieRent.getRented()+ " where rm.movieRentId =" + id);
             update.executeUpdate();
             session.flush();
             transaction.commit();
-            return movieType.getMovieRentId();
+            return movieRent.getMovieRentId();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

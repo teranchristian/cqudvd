@@ -83,23 +83,12 @@
                         <div class="control-group">
                             <label for="movieRent.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                                <s:textarea name="movieRent.stock" cols="40" rows="10"/>
+                                <s:textfield name="movieRent.stock" maxlength="8" size="8"/>
                             </div>
                         </div>
                     </td>	
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="control-group">
-                            <label for="movieRent.rented" class="control-label lblinput">Rented :   </label>
-                            <div class="controls pull-right">
-                                <s:textarea name="movieRent.rented" cols="40" rows="10"/>
-                            </div>
-                        </div>
-                    </td>	
-                </tr>
-               
-                
+                </tr>              
+                               
                 <tr>
                     <td colspan="2">
                         <div class="modal-footer">  

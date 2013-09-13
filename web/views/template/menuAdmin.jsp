@@ -28,7 +28,7 @@
                         <ul id="nav">
                             <li><a href="${pageContext.request.contextPath}/admin/genre">Genres</a></li>                  
                             <li class="dropdown">
-                                <a href="${pageContext.request.contextPath}/admin/movies" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+                                <a href="${pageContext.request.contextPath}/admin/movies" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
                                     Movie<b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -39,7 +39,17 @@
                                     <li class="divider"></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Reports</a></li>
+                            <li class="dropdown">
+                                <a href="${pageContext.request.contextPath}/admin/report" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">
+                                    Report<b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies/buyMovies">Stock Report</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/movies/listRentMovies">Sales Report</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </div>

@@ -28,7 +28,7 @@ public interface MoviesDAO {
     
     
     public ArrayList<MoviesRent> listRent();
-    public MoviesRent editTypeDetail(String id);
+    public MoviesRent editRentDetail(String id);
     public int updateRentList(MoviesRent movieType);
     public int insertRentMovie(MoviesRent movieRent);
     public boolean deleteRentItem(String id);
