@@ -9,6 +9,7 @@ import model.dao.MoviesDAO;
 import model.dao.MoviesDAOImpl;
 import model.entities.Movies;
 import model.entities.MoviesBuy;
+import model.entities.MoviesRent;
 
 /**
  *
@@ -17,12 +18,41 @@ import model.entities.MoviesBuy;
 public class BuyAndRentController {
     private MoviesDAO moviesDAO=new MoviesDAOImpl();
     ArrayList<MoviesBuy> list = new ArrayList();
+    ArrayList<MoviesRent> listRent = new ArrayList();
     String itemId;
     String msg;
     private MoviesBuy movieBuy  = new MoviesBuy();
+    private MoviesRent movieRent  = new MoviesRent();
     private ArrayList<Movies> listForBuy = new ArrayList();
+    private ArrayList<Movies> listForRent = new ArrayList();
     private Movies movie = new Movies();
 
+    public ArrayList<MoviesRent> getListRent() {
+        return listRent;
+    }
+
+    public void setListRent(ArrayList<MoviesRent> listRent) {
+        this.listRent = listRent;
+    }
+
+    public MoviesRent getMovieRent() {
+        return movieRent;
+    }
+
+    public void setMovieRent(MoviesRent movieRent) {
+        this.movieRent = movieRent;
+    }
+
+    public ArrayList<Movies> getListForRent() {
+        return listForRent;
+    }
+
+    public void setListForRent(ArrayList<Movies> listForRent) {
+        this.listForRent = listForRent;
+    }
+    
+    
+    
     public MoviesDAO getMoviesDAO() {
         return moviesDAO;
     }
@@ -131,5 +161,52 @@ public class BuyAndRentController {
 
     }
 
+       // -----------------------------------Rent Movies------------------------
+    public String listRentMovies() {
+        listRent = moviesDAO.listRent();
+        return "success";
+    }
+
+    public String editRentList() {
+        movieRent = moviesDAO.editTypeDetail(itemId);
+        return "success";
+    }
+    
+    public String updateRentList() {
+        int movieRentId = moviesDAO.updateRentList(movieRent);
+        if (movieRentId != 0) {
+            return "success";
+        } else {
+            msg = "something is not right";
+            return "fail";
+        }
+    }
+    
+    public String addRentList() {
+        listForRent = moviesDAO.rentAvailable();
+        return "success";
+    }
+
+    public String insertRentMovie() {
+        movie = moviesDAO.movieDetail("" + movie.getMovieId());
+        movieRent.setMovie(movie);
+        int movieTypeId = moviesDAO.insertRentMovie(movieRent);
+        if (movieTypeId != 0) {
+            msg = "Movies has added in rent Categories";
+        } else {
+            msg = "Something went wrong";
+        }
+        return "success";
+    }
+    
+    public String deleteRentItem() {
+        if (moviesDAO.deleteRentItem(itemId)) {
+            msg = "This movie has been removed from List";
+        } else {
+            msg = "Somethings goes worng, please try it again";
+        }
+        return "success";
+
+    }
     
 }

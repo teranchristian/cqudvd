@@ -6,6 +6,7 @@ package model.dao;
 import java.util.ArrayList;
 import model.entities.Movies;
 import model.entities.MoviesBuy;
+import model.entities.MoviesRent;
 import model.entities.MoviesType;
 /**
  *
@@ -27,10 +28,10 @@ public interface MoviesDAO {
     public boolean deleteBuy(String id);
     
     
-    public ArrayList<MoviesType> listRent();
-    public MoviesType editTypeDetail(String id);
-    public int updateRentList(MoviesType movieType);
-    public int insertRentMovie(MoviesType movieType);
+    public ArrayList<MoviesRent> listRent();
+    public MoviesRent editTypeDetail(String id);
+    public int updateRentList(MoviesRent movieType);
+    public int insertRentMovie(MoviesRent movieRent);
     public boolean deleteRentItem(String id);
     
     public ArrayList<Movies> searchTitle(String search);

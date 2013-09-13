@@ -149,23 +149,23 @@
         
          
        
-        <action name="listRentMovies" class="controller.MovieController" method="listRentMovies" >
+        <action name="listRentMovies" class="controller.BuyAndRentController" method="listRentMovies" >
             <result name="success" type="tiles">listRentMovies</result>
         </action>
-        <action name="editRentList" class="controller.MovieController" method="editRentList" >
+        <action name="editRentList" class="controller.BuyAndRentController" method="editRentList" >
             <result name="success" type="tiles">editRentList</result>
         </action>
-        <action name="updateRentList" class="controller.MovieController" method="updateRentList" >
+        <action name="updateRentList" class="controller.BuyAndRentController" method="updateRentList" >
             <result name="success" type="redirect">movies/listRentMovies</result>
             <result name="fail" type="tiles">editRentList</result>
         </action>
-        <action name="addRentList" class="controller.MovieController" method="addRentList" >
+        <action name="addRentList" class="controller.BuyAndRentController" method="addRentList" >
             <result name="success" type="tiles">addRentList</result>
         </action>
-        <action name="insertRentMovie" class="controller.MovieController" method="insertRentMovie" >
+        <action name="insertRentMovie" class="controller.BuyAndRentController" method="insertRentMovie" >
             <result name="success" type="tiles">insertRentMovie</result>
         </action>
-        <action name="deleteRentItem" class="controller.MovieController" method="deleteRentItem" >
+        <action name="deleteRentItem" class="controller.BuyAndRentController" method="deleteRentItem" >
             <result name="success" type="redirect">movies/listRentMovies</result>
         </action>
     </package>

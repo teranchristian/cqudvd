@@ -17,5 +17,7 @@
     <mapping resource="model/mapping/Movies.hbm.xml"/>    
     <mapping resource="model/mapping/MoviesType.hbm.xml"/>
     <mapping resource="model/mapping/MoviesBuy.hbm.xml"/>
+    <mapping resource="model/mapping/MoviesRent.hbm.xml"/>
+    
   </session-factory>
 </hibernate-configuration>

@@ -9,6 +9,7 @@
     <table-filter match-name="MOVIES"/>
     <table-filter match-name="MOVIES_TYPE"/>
     <table-filter match-name="MOVIES_BUY"/>
+    <table-filter match-name="MOVIES_RENT"/>
 </hibernate-reverse-engineering>
 
 

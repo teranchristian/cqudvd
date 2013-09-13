@@ -35,6 +35,9 @@
                         </th>
                         <th class="mainlistheading" align="left" valign="center">
                             STOCK
+                        </th><th class="mainlistheading" align="left" valign="center">
+                        <th class="mainlistheading" align="left" valign="center">
+                            RENTED
                         </th><th class="mainlistheading" style="width: 5%">
                             EDIT
                         </th>						
@@ -45,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <s:iterator value="%{listType}">
+                    <s:iterator value="%{listRent}">
                         
                         <tr>
                             <td>
@@ -59,11 +62,14 @@
                             </td><td>
                                 <s:property value="stock"/>                       
                             </td>                            
+                            </td><td>
+                                <s:property value="rented"/>                       
+                            </td>                            
                             <td>
-                                <a href="${pageContext.request.contextPath}/admin/editRentList?itemId=<s:property value="movieTypeId"/>"><center><i class="icon-pencil"></i></center></a>
+                                <a href="${pageContext.request.contextPath}/admin/editRentList?itemId=<s:property value="movieRentId"/>"><center><i class="icon-pencil"></i></center></a>
                             </td>
                             <td>
-                            <center><i class="icon-trash" id="del" rel="<s:property value="movie.movieTitle"/>" value="<s:property value="movieTypeId"/>"></i></center>
+                            <center><i class="icon-trash" id="del" rel="<s:property value="movie.movieTitle"/>" value="<s:property value="movieRentId"/>"></i></center>
                     </td>
                     </tr>
                 </s:iterator>

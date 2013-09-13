@@ -62,7 +62,7 @@
                         <div class="control-group">
                             <label for="movie.movieId" class="control-label lblinput">Movie Title :   </label>
                             <div class="controls pull-right">
-                                <s:select name="movie.movieId"  label="movie.movieId"  list="%{rentAvailable}" listKey="movieId" listValue="movieTitle" value="%{movie.movieId}"/>
+                                <s:select name="movie.movieId"  label="movie.movieId"  list="%{listForRent}" listKey="movieId" listValue="movieTitle" value="%{movie.movieId}"/>
                             </div>
                         </div>
                     </td>	
@@ -70,9 +70,9 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.price" class="control-label lblinput">Price: </label>
+                            <label for="movieRent.price" class="control-label lblinput">Price: </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movieType.price" maxlength="5" size="5"/>                                
+                                <s:textfield  name="movieRent.price" maxlength="5" size="5"/>                                
                             </div>
                         </div>
                     </td>	
@@ -81,9 +81,19 @@
                 <tr>
                     <td colspan="2">
                         <div class="control-group">
-                            <label for="movieType.stock" class="control-label lblinput">Stock :   </label>
+                            <label for="movieRent.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                                <s:textarea name="movieType.stock" cols="40" rows="10"/>
+                                <s:textarea name="movieRent.stock" cols="40" rows="10"/>
+                            </div>
+                        </div>
+                    </td>	
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="control-group">
+                            <label for="movieRent.rented" class="control-label lblinput">Rented :   </label>
+                            <div class="controls pull-right">
+                                <s:textarea name="movieRent.rented" cols="40" rows="10"/>
                             </div>
                         </div>
                     </td>	

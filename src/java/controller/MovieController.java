@@ -251,54 +251,7 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
 
     
     
-    // -----------------------------------Rent Movies------------------------
-    public String listRentMovies() {
-        listType = moviesDAO.listRent();
-        return "success";
-    }
-
-    public String editRentList() {
-        movieType = moviesDAO.editTypeDetail(itemId);
-        return "success";
-    }
-    
-    public String updateRentList() {
-        int movieTypeId = moviesDAO.updateRentList(movieType);
-        if (movieTypeId != 0) {
-            return "success";
-        } else {
-            msg = "something is not right";
-            return "fail";
-        }
-    }
-    
-    public String addRentList() {
-        rentAvailable = moviesDAO.rentAvailable();
-        return "success";
-    }
-
-    public String insertRentMovie() {
-        movie = moviesDAO.movieDetail("" + movie.getMovieId());
-        movieType.setMovie(movie);
-        movieType.setMovieType("RENT");
-        int movieTypeId = moviesDAO.insertRentMovie(movieType);
-        if (movieTypeId != 0) {
-            msg = "Movies has added in rent Categories";
-        } else {
-            msg = "Something went wrong";
-        }
-        return "success";
-    }
-    
-    public String deleteRentItem() {
-        if (moviesDAO.deleteRentItem(itemId)) {
-            msg = "This movie has been removed from List";
-        } else {
-            msg = "Somethings goes worng, please try it again";
-        }
-        return "success";
-
-    }
+ 
     // -----------------------------------Search Movies------------------------     
     public String searchMovie() {
         if (searchType.endsWith("T")){
