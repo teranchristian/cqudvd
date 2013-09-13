@@ -9,7 +9,6 @@ import model.entities.Movies;
 import java.util.ArrayList;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
-import model.entities.MoviesType;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.Query;
