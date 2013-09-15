@@ -7,6 +7,7 @@ package model.dao;
 import java.util.ArrayList;
 import model.entities.Movies;
 import java.util.ArrayList;
+import java.util.List;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
 import org.hibernate.Session;
@@ -104,7 +105,7 @@ public class MoviesDAOImpl implements MoviesDAO {
     public ArrayList<MoviesBuy> listBuy() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        ArrayList<MoviesBuy> lmb= (ArrayList<MoviesBuy>) session.createQuery("from MoviesBuy m where m.active='T'").list();
+        ArrayList<MoviesBuy> lmb = (ArrayList<MoviesBuy>) session.createQuery("from MoviesBuy m where m.active='T'").list();
         //session.close();
         return lmb;
     }
@@ -117,6 +118,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session.close();
         return mb;
     }
+
     @Override
     public MoviesBuy editBuyDetailByMovieId(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -228,7 +230,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         ArrayList<MoviesRent> lmr = (ArrayList<MoviesRent>) session.createQuery("from MoviesRent m where m.active='T'").list();
-       // session.close();
+        // session.close();
         return lmr;
     }
 
@@ -317,6 +319,25 @@ public class MoviesDAOImpl implements MoviesDAO {
                 transaction.rollback();
             }
             return false;
+        }
+    }
+
+    @Override
+    public ArrayList<Movies> listViewCart(List<Integer> sessionList) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            ArrayList<Movies> lm = new ArrayList<Movies>();
+            for (Integer id : sessionList) {
+                Movies m = (Movies) session.createQuery("from Movies where movieId =" + id).uniqueResult();
+                lm.add(m);
+            }
+
+          //  ArrayList<Movies> lm = (ArrayList<Movies>) session.createQuery("Select m from MoviesRent as mb right join mb.movie as m where m.active = 'T' AND mb.movie is Null").list();
+            //session.close();
+            return lm;
+        } catch (Exception e) {
+            return null;
         }
     }
 }
