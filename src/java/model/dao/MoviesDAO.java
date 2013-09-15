@@ -4,6 +4,7 @@
  */
 package model.dao;
 import java.util.ArrayList;
+import java.util.List;
 import model.entities.Movies;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
@@ -39,6 +40,6 @@ public interface MoviesDAO {
     public ArrayList<Movies> searchGenre(String search);
     public ArrayList<Movies> searchYear(String search);
     
-    
+    public ArrayList<Movies> listViewCart(List<Integer> sessionList);
     
 }
