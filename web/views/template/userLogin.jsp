@@ -25,7 +25,9 @@
                             </s:else>
                     </div>
                     <div class="span6">
-                        <h3 class="currentUser pull-right">Follow us <img src="${pageContext.request.contextPath}/public/img/facebook.png"/>&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/public/img/twitter.png"/>&nbsp;&nbsp;<img  src="${pageContext.request.contextPath}/public/img/google.png"/> </h3> 
+                        <h3 class="currentUser pull-right">
+                            <a href="${pageContext.request.contextPath}/viewCart"><i class="icon-shopping-cart icon-white"></i>My Cart (${cookie["total"].value}) </a>| 
+                            Follow us <img src="${pageContext.request.contextPath}/public/img/facebook.png"/>&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/public/img/twitter.png"/>&nbsp;&nbsp;<img  src="${pageContext.request.contextPath}/public/img/google.png"/> </h3> 
                     </div>
                 </div>
             </div>

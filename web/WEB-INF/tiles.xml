@@ -138,4 +138,9 @@
         <put-attribute name="menu"   value="/views/template/menuAdmin.jsp"/>
         <put-attribute name="body"   value="/views/admin/reports/stockReport.jsp"/>          
     </definition>
+    <!-- checkout -->
+    <definition name="viewCart" extends="baseLayout">
+        <put-attribute name="title"  value="Check Out"/>
+        <put-attribute name="body"   value="/views/checkOut/list.jsp"/>          
+    </definition>
 </tiles-definitions>

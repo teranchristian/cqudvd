@@ -40,6 +40,15 @@
         <action name="movieDetails" class="controller.MovieController" method="movieDetails" >
             <result name="success" type="tiles">movieDetails</result>    
         </action>
+        <!--
+        shopping cart
+        -->
+        <action name="viewCart" class="controller.BuyAndRentController" method="viewCart" >
+            <result name="success" type="tiles">viewCart</result>    
+        </action>
+        <action name="addCart" class="controller.BuyAndRentController" method="addCart" >
+            <result name="success" type="redirect">welcome</result>    
+        </action>
                   
                                       
         
