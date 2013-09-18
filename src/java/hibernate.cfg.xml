@@ -8,6 +8,9 @@
     <property name="hibernate.connection.username">cqu</property>
     <property name="hibernate.connection.password">cqu</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <property name="cache.provider_class" >
+        org.hibernate.cache.NoCacheProvider
+    </property>
     <!-- <property name="hibernate.connection.isolation">2</property>  -->
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">false</property>

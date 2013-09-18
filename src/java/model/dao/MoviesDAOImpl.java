@@ -61,7 +61,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         Movies m = (Movies) session.createQuery("from Movies where movieId =" + id).uniqueResult();
-        session.close();
+       // session.close();
         return m;
     }
 
@@ -91,7 +91,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             Query update = session.createQuery("update Movies  set active ='F'  where movieId =" + id);
             update.executeUpdate();
             transaction.commit();
-            session.close();
+            //session.close();
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -104,18 +104,22 @@ public class MoviesDAOImpl implements MoviesDAO {
     @Override
     public ArrayList<MoviesBuy> listBuy() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
+        
         session.beginTransaction();
+        session.flush();  
         ArrayList<MoviesBuy> lmb = (ArrayList<MoviesBuy>) session.createQuery("from MoviesBuy m where m.active='T'").list();
-        //session.close();
+       // transaction.commit();
+        //session.getTransaction().commit();
         return lmb;
     }
 
     @Override
     public MoviesBuy editBuyDetail(String id) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
-        transaction = session.beginTransaction();
+        session.beginTransaction();
+        session.flush();
         MoviesBuy mb = (MoviesBuy) session.createQuery("from MoviesBuy where moviesBuyId =" + id).uniqueResult();
-        session.close();
+        //session.d
         return mb;
     }
 
@@ -124,7 +128,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         MoviesBuy mb = (MoviesBuy) session.createQuery("from MoviesBuy as mb where mb.movie.movieId=" + id).uniqueResult();
-        session.close();
+       // session.close();
         return mb;
     }
 
@@ -139,7 +143,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             update.executeUpdate();
             session.flush();
             transaction.commit();
-            session.close();
+            //session.close();
             return movieBuy.getMoviesBuyId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -157,7 +161,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             session.save(movieBuy);
             session.flush();
             transaction.commit();
-            session.close();
+           // session.close();
             return movieBuy.getMoviesBuyId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -175,7 +179,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             Query update = session.createQuery("update MoviesBuy  set active ='F'  where moviesBuyId =" + id);
             update.executeUpdate();
             transaction.commit();
-            session.close();
+            //session.close();
             return true;
         } catch (Exception e) {
             if (transaction != null) {
@@ -248,7 +252,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         MoviesRent mr = (MoviesRent) session.createQuery("from MoviesRent as mr where mr.movie.movieId=" + id).uniqueResult();
-        session.close();
+       // session.close();
         return mr;
     }
 
@@ -293,7 +297,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             session.save(movieRent);
             session.flush();
             transaction.commit();
-            session.close();
+            //session.close();
             return movieRent.getMovieRentId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -312,7 +316,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             Query update = session.createQuery("update MoviesRent  set active ='F'  where movieRentId =" + id);
             update.executeUpdate();
             transaction.commit();
-            session.close();
+            //session.close();
             return true;
         } catch (Exception e) {
             if (transaction != null) {

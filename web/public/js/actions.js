@@ -1,12 +1,13 @@
 //end table    
 $(document).ready(function() {  
     
-    $('#del').live('click', function(e) {          
+    $('#delCart').live('click', function(e) { 
+        var movieType =$(this).attr('rel');
         var itemId = $(this).attr("value");
         delItem = $(this).parents('tr');
         delItem.css("background-color","red"); 
         $('<div></div>').appendTo('body')
-        .html('<div><font size="3">Are you sure you want to delete :</br><strong>"'+ $(this).attr('rel') +'"</strong> ?</font></div>')
+        .html('<div><font size="3">Are you sure you want to delete this item </strong> ?</font></div>')
         .dialog({
             title: 'Delete message', 
             autoOpen: true,
@@ -16,7 +17,7 @@ $(document).ready(function() {
             modal: true,
             buttons: {
                 Yes:function ()  {                           
-                    post_to_url($('#action').val(),{ "itemId": itemId } );
+                    post_to_url($('#action').val(),{ "itemId": itemId,"movieType":movieType } );
                     $(this).dialog("close");
                 },
                 No: function () {

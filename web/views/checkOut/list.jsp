@@ -2,7 +2,7 @@
 <br>
 <br>
 <div class="container">
-    <s:if test="%{list.isEmpty()}">   
+    <s:if test="%{#list.isEmpty()|| #listRent.isEmpty() }">   
         <br/>
         <br/>
         <div class="hero-unit center">
@@ -35,7 +35,6 @@
                             </td>
                         </tr>
                     </table>            
-                    <input type="hidden" id="action" value="${pageContext.request.contextPath}/admin/deleteMovie"/>
                 <table border="0" cellpadding="1px" cellspacing="0px"  nowrap="nowrap"  id="example" class="table-bordered data-table table table-hover" style="border: 1px solid black;">
                     <thead>
                         <tr>
@@ -54,6 +53,9 @@
                             <th class="mainlistheading" style="width: 5%">
                                 price
                             </th>						
+                            <th class="mainlistheading" style="width: 5%">
+                                del
+                            </th>						
                         </tr>
                     </thead>
                     <tbody>
@@ -64,10 +66,10 @@
                                     <img src="${pageContext.request.contextPath}/public/moviepic/<s:property value="movie.movieId"/>.png"> 
                                 </td>
                                 <td>
-                                    <!-- <//s:property value="movie.movieTitle"/>-->                       
+                                     <s:property value="movie.movieTitle"/>                       
                                 </td>
                                 <td>
-                                    <!-- <//s:property value="movie.description"/>-->                       
+                                    <s:property value="movie.description"/>                       
                                 </td>                           
                                 <td>
                                     Buy
@@ -75,6 +77,9 @@
                                 <td>
                                     $<s:property value="price"/>
                                     <s:set var="total" value="%{price + #attr.total}" />
+                                </td>
+                                <td>
+                                    <center><i class="icon-trash" id="delCart" rel="buy" value="<s:property value="movie.movieId"/>"></i></center>
                                 </td>
                             </tr>
                         </s:iterator>
@@ -84,10 +89,10 @@
                                     <img src="${pageContext.request.contextPath}/public/moviepic/<s:property value="movie.movieId"/>.png"> 
                                 </td>
                                 <td>
-                                   <!--<//s:property value="movie.movieTitle"/> -->                      
+                                 <s:property value="movie.movieTitle"/>                 
                                 </td>
                                 <td>
-                                   <!-- <//s:property value="movie.description"/> -->
+                               <s:property value="movie.description"/> 
                                 </td>                           
                                 <td>
                                     Rent
@@ -96,13 +101,18 @@
                                     $<s:property value="price"/>
                                     <s:set var="total" value="%{price + #attr.total}" />
                                 </td>
+                                <td>                                    
+                                    <center><i class="icon-trash" id="delCart" rel="rent" value="<s:property value="movie.movieId"/>"></i></center>
+                                </td>
                             </tr>
                         </s:iterator>
                             <tr>
-                                <td colspan="4">                                    
+                                <td class="mainlistheading"  colspan="4">                                    
                                 </td>
                                 <td>
                                     $<s:property value="%{'' + #attr.total}" /> 
+                                </td>
+                                <td class="mainlistheading" >                                    
                                 </td>
                             </tr>
                     </tbody>                
@@ -113,4 +123,5 @@
         </div>
     </div>
 </div>  
-<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/adminAct.js"></script>
+<input type="hidden" id="action" value="${pageContext.request.contextPath}/removeItemCart"/>
+<script type="text/javascript" language="javascript" src="${pageContext.request.contextPath}/public/js/actions.js"></script>

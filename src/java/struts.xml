@@ -49,6 +49,9 @@
         <action name="addCart" class="controller.BuyAndRentController" method="addCart" >
             <result name="success" type="redirect">welcome</result>    
         </action>
+        <action name="removeItemCart" class="controller.BuyAndRentController" method="removeItemCart" >
+            <result name="success" type="redirect">viewCart</result>    
+        </action>
                   
                                       
         

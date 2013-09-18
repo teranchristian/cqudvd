@@ -235,46 +235,66 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     //Check Out
 
     public String addCart() {
-        int total=0;
-        if (movieType!=null){
+        int total = 0;
+        if (movieType != null) {
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("ddmmyyyyhhmmss");
             String formattedDate = sdf.format(date);
-            Cookie c = new Cookie(movieType+"-"+formattedDate, itemId);
+            Cookie c = new Cookie(movieType + "-" + formattedDate, itemId);
             c.setMaxAge(60 * 60 * 24 * 365);
             servletResponse.addCookie(c);
             total++;
         }
-        //total shopping cart
-        
-        for(Cookie t : servletRequest.getCookies()) {
-        if ( t.getName().startsWith("b") || t.getName().startsWith("r"))
-            total++;
+        //total shopping cart        
+        for (Cookie t : servletRequest.getCookies()) {
+            if (t.getName().startsWith("b") || t.getName().startsWith("r")) {
+                total++;
+            }
         }
         Cookie ctotal = new Cookie("total", Integer.toString(total));
         ctotal.setMaxAge(60 * 60 * 24 * 365);
-        servletResponse.addCookie(ctotal);       
+        servletResponse.addCookie(ctotal);
+        return "success";
+
+    }
+
+    public String removeItemCart() {
+        boolean delete = false;
+
+        for (Cookie c : servletRequest.getCookies()) {
+            if ((c.getName().startsWith(movieType)) && (c.getValue().equals(itemId)) && delete == false) {
+                //total++;   
+                
+                c.setMaxAge(0);
+                servletResponse.addCookie(c);
+                delete = true;
+            }
+        }
+        //total shopping cart       
+        int total = -1;
+        for (Cookie t : servletRequest.getCookies()) {
+            if (t.getName().startsWith("buy") || t.getName().startsWith("rent")) {
+                total++;
+            }
+        }
+        Cookie ctotal = new Cookie("total", Integer.toString(total));
+        ctotal.setMaxAge(60 * 60 * 24 * 365);
+        servletResponse.addCookie(ctotal);
         return "success";
 
     }
 
     public String viewCart() {
-         for(Cookie t : servletRequest.getCookies()) {
-            if ( t.getName().startsWith("b")){
-                movieBuy=moviesDAO.editBuyDetailByMovieId(t.getValue());
+        for (Cookie t : servletRequest.getCookies()) {
+            if (t.getName().startsWith("b")) {
+                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
                 list.add(movieBuy);
             }
-            if ( t.getName().startsWith("r")){
-                movieRent=moviesDAO.editRentDetailByMovieId(t.getValue());
+            if (t.getName().startsWith("r")) {
+                movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
                 listRent.add(movieRent);
             }
         }
-        //List<shoppingCart> moviesListSession = new ArrayList<shoppingCart>();
-        //shoppingCart sc= new shoppingCart();
-        //sc.setMovieId(Integer.parseInt(itemId));
-        //sc.setMovieType(movieType);
-        //moviesListSession.add(sc);
-        //listMovies=moviesDAO.listViewCart(moviesListSession);
         return "success";
 
     }
