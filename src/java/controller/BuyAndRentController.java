@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +22,13 @@ import model.entities.shoppingCart;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author cardven
  */
-public class BuyAndRentController extends ActionSupport implements ServletResponseAware, ServletRequestAware {
+public class BuyAndRentController extends ActionSupport implements ServletResponseAware, ServletRequestAware,SessionAware {
 
     private MoviesDAO moviesDAO = new MoviesDAOImpl();
     ArrayList<MoviesBuy> list = new ArrayList();
@@ -40,6 +42,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     private ArrayList<Movies> listForBuy = new ArrayList();
     private ArrayList<Movies> listForRent = new ArrayList();
     private Movies movie = new Movies();
+    private Map<String, Object> session;
 
     public ArrayList<MoviesRent> getListRent() {
         return listRent;
@@ -232,7 +235,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         return "success";
 
     }
-    //Check Out
+    //-----------------------Check Out----------------------------------
 
     public String addCart() {
         int total=0;
@@ -259,6 +262,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     }
 
     public String viewCart() {
+        String id = session.get("userId").toString();
          for(Cookie t : servletRequest.getCookies()) {
             if ( t.getName().startsWith("b")){
                 movieBuy=moviesDAO.editBuyDetailByMovieId(t.getValue());
@@ -278,6 +282,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         return "success";
 
     }
+    
+    
     protected HttpServletResponse servletResponse;
 
     @Override
@@ -289,5 +295,14 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     @Override
     public void setServletRequest(HttpServletRequest servletRequest) {
         this.servletRequest = servletRequest;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
+    }
+
+    public Map<String, Object> getsession() {
+        return session;
     }
 }
