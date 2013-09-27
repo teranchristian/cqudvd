@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
 import model.entities.shoppingCart;
 import javax.servlet.http.HttpServletResponse;
+import model.entities.Orders;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
@@ -35,11 +37,22 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     String itemId;
     String msg;
     String movieType;
+    String userId;
     private MoviesBuy movieBuy = new MoviesBuy();
     private MoviesRent movieRent = new MoviesRent();
     private ArrayList<Movies> listForBuy = new ArrayList();
     private ArrayList<Movies> listForRent = new ArrayList();
     private Movies movie = new Movies();
+    private Orders order = new Orders();
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
 
     public ArrayList<MoviesRent> getListRent() {
         return listRent;
@@ -293,6 +306,39 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
             if (t.getName().startsWith("r")) {
                 movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
                 listRent.add(movieRent);
+            }
+        }
+        return "success";
+
+    }
+
+    public String checkout() {
+       String asd = "1";
+       
+//        UserController ucont = new UserController();
+//        Map<String, Object> session = ucont.getsession();
+//      String id= session.get("userId").toString();
+//      String name= session.get("userDescr").toString();
+      
+        for (Cookie t : servletRequest.getCookies()) {
+            if (t.getName().startsWith("b")) {
+                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
+                //movieBuy;
+                MoviesRent mr= new MoviesRent();
+                mr.setMovieRentId(0);
+                order.setMovieBuy(movieBuy);
+                order.setMovieRent(mr);
+                order.setPrice(movieBuy.getPrice());
+                
+                String orderno = moviesDAO.insertOrder(userId, order);
+                     
+                
+                
+            }
+            if (t.getName().startsWith("r")) {
+                movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
+                //movieRent;
+                
             }
         }
         return "success";

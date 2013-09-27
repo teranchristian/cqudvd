@@ -6,7 +6,7 @@
                 <div class="span12 ">
                     <div class="menuLogo ">
                         <center>
-                            <img  src="${pageContext.request.contextPath}/public/img/logo.png"/>
+                            <a href="${pageContext.request.contextPath}"> <img  src="${pageContext.request.contextPath}/public/img/logo.png"/></a>
                         </center>
                     </div>
                 </div>

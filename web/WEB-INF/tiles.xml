@@ -143,4 +143,8 @@
         <put-attribute name="title"  value="Check Out"/>
         <put-attribute name="body"   value="/views/checkOut/list.jsp"/>          
     </definition>
+    <definition name="payment" extends="baseLayout">
+        <put-attribute name="title"  value="Payment"/>
+        <put-attribute name="body"   value="/views/checkOut/payment.jsp"/>          
+    </definition>
 </tiles-definitions>

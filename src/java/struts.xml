@@ -21,6 +21,7 @@
         <action name="validate" class="controller.UserController" method="validate" >
             <result name="error" type="tiles">login</result> 
             <result name="admin" type="tiles">admin</result>    
+            <result name="welcome" type="tiles">welcome</result>    
         </action>
         <action name="logout" class="controller.UserController" method="logout" >
             <result name="success" type="tiles">welcome</result>   
@@ -87,6 +88,9 @@
                 
         <action name="updateUser" class="controller.UserController" method="updateUser" >
             <result name="success" type="tiles">welcome</result>
+        </action>
+        <action name="checkout" class="controller.BuyAndRentController" method="checkout" >
+            <result name="success" type="tiles">payment</result>
         </action>
     </package>
     

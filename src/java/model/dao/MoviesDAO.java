@@ -8,6 +8,7 @@ import java.util.List;
 import model.entities.Movies;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
+import model.entities.Orders;
 /**
  *
  * @author cardven
@@ -41,5 +42,7 @@ public interface MoviesDAO {
     public ArrayList<Movies> searchYear(String search);
     
     public ArrayList<Movies> listViewCart(List<Integer> sessionList);
+    public String insertOrder(String userID, Orders order);
+    
     
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.entities.MoviesBuy;
 import model.entities.MoviesRent;
+import model.entities.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.Query;
@@ -73,7 +74,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             session.update(movie);
             session.flush();
             transaction.commit();
-            session.close();
+            //session.close();
             return movie.getMovieId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -243,7 +244,7 @@ public class MoviesDAOImpl implements MoviesDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         transaction = session.beginTransaction();
         MoviesRent mr = (MoviesRent) session.createQuery("from MoviesRent where movieRentId =" + id).uniqueResult();
-        session.close();
+        //session.close();
         return mr;
     }
 
@@ -266,7 +267,7 @@ public class MoviesDAOImpl implements MoviesDAO {
             update.executeUpdate();
             session.flush();
             transaction.commit();
-            session.close();
+            //session.close();
             return movieRent.getMovieRentId();
         } catch (Exception e) {
             if (transaction != null) {
@@ -344,4 +345,26 @@ public class MoviesDAOImpl implements MoviesDAO {
             return null;
         }
     }
+
+    
+
+    @Override
+    public String insertOrder(String userID, Orders order) {
+        try {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+            session.save(order);
+            //session.flush();
+            transaction.commit();
+            return "success";
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return "0";
+        }
+
+    }
+
+    
 }

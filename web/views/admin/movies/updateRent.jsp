@@ -3,14 +3,12 @@
     $(document).ready(function() {
         $("#form").validate({
             rules: {
-                "movie.movieTitle": {
-                    required: true 
+                "movieRent.price": {
+                    required: true
                 },
-                "movie.releaseYear": {
-                    required: true 
-                },
-                "movie.description": {
-                    required: true 
+                "movieRent.stock": {
+                    required: true,
+                    digits: true
                 }
             },
             highlight: function(element) {
@@ -66,7 +64,11 @@
                         <div class="control-group">
                             <label for="movieRent.price" class="control-label lblinput">Price :   </label>
                             <div class="controls pull-right">
-                            <s:textfield  name="movieRent.price" maxlength="50" size="30"/>
+                                <div class="input-prepend input-append">
+                                <span class="add-on">$</span>
+                                <s:textfield  name="movieRent.price" maxlength="5" size="5" style="width:180px;"/>            
+                                </div> 
+                            
                             </div>
                         </div>
                     </td>

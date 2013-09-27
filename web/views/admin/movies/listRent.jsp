@@ -58,7 +58,7 @@
                                 <s:property value="movie.movieTitle"/>                       
                             </td>
                             <td>
-                                <s:property value="price"/>                       
+                                $ <s:property value="price"/>                       
                             </td><td>
                                 <s:property value="stock"/>                       
                             </td>                            

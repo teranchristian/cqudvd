@@ -27,8 +27,10 @@
 <br/>
 
 <div class="container">
-    <h2 class=" label-info text-center">What's new in store</h2>
-    <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+    <h2 class=" label-info text-center">What's in store</h2>
+    <br/>
+    <p><h4> One of the largest DVD and  Blu-Ray destination. Check out our huge range of movies, TV series!</h4></p>
+    <br>
     <div class="row-fluid">
         <ul class="thumbnails">
             <s:iterator value="%{list}">
@@ -39,7 +41,7 @@
                     <div class="caption">
                         <h3><s:property value="movieTitle"/> </h3>
                         <p><s:property value="description"/> </p>
-                        <p><a href="#" class="btn btn-blue btn-size-action" >Rent</a> <a href="#" class="btn btn-size-action btn-yellow pull-right">Buy</a></p>
+                        <p><a class="btn btn-blue" href="${pageContext.request.contextPath}/movieDetails?itemId=<s:property value="movieId"/>" >view</a></p>
                     </div>
                 </div>
             </li>

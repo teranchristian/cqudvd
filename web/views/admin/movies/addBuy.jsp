@@ -6,17 +6,12 @@
                 "movie.movieTitle": {
                     required: true 
                 },
-                "movie.releaseYear": {
+                "movieBuy.price": {
+                    required: true
+                },
+                "movieBuy.stock": {
                     required: true,
                     digits: true
-                },
-                "movie.description": {
-                    required: true 
-                },
-                "userImage": {
-                    required: true,
-                    accept: "png|jpe?g|gif", 
-                    filesize: 1048576
                 }
             },
              messages: { "userImage": "File must be JPG, GIF or PNG, less than 1MB" },
@@ -72,7 +67,10 @@
                         <div class="control-group">
                             <label for="movieBuy.price" class="control-label lblinput">Price: </label>
                             <div class="controls pull-right">
-                                <s:textfield  name="movieBuy.price" maxlength="5" size="5"/>                                
+                                <div class="input-prepend input-append">
+                                <span class="add-on">$</span>
+                                    <s:textfield id="appendedInputButton"  name="movieBuy.price" maxlength="5" size="4" style="width:180px;"/>     
+                                </div>                                
                             </div>
                         </div>
                     </td>	
@@ -83,7 +81,7 @@
                         <div class="control-group">
                             <label for="movieBuy.stock" class="control-label lblinput">Stock :   </label>
                             <div class="controls pull-right">
-                                <s:textarea name="movieBuy.stock" cols="40" rows="10"/>
+                                <s:textfield name="movieBuy.stock" maxlength="8" size="8"/>
                             </div>
                         </div>
                     </td>	

@@ -104,6 +104,7 @@
                         </div>
                     </td>	
                 </tr>
+                <!--
                 <tr>
                     <td >
                         Image:
@@ -114,6 +115,7 @@
                         
                     </td>	
                 </tr>
+                -->
                 <tr>
                     <td colspan="2">
                         <div class="modal-footer">  

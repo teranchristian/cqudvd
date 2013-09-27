@@ -22,7 +22,9 @@
                     <td colspan="2">     
                         <div class="thumbnail" style="padding: 0">
                             <div style="padding:4px">
+                                <center>                                    
                                 <img src="${pageContext.request.contextPath}/public/moviepic/<s:property value="movie.movieId"/>.png"> 
+                                </center>
                             </div>
                             <div class="caption">
                                 <h2><s:property value="movie.movieTitle"/></h2>                                

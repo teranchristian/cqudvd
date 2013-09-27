@@ -8,20 +8,20 @@
     <property name="hibernate.connection.username">cqu</property>
     <property name="hibernate.connection.password">cqu</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="cache.provider_class" >
+    <property name="cache.provider_class">
         org.hibernate.cache.NoCacheProvider
     </property>
     <!-- <property name="hibernate.connection.isolation">2</property>  -->
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">false</property>
-    <!-- Note 1, Disable the second-level cache --> 
+    <!-- Note 1, Disable the second-level cache -->
     <mapping resource="model/mapping/Users.hbm.xml"/>
     <mapping resource="model/mapping/Roles.hbm.xml"/>
     <mapping resource="model/mapping/Login.hbm.xml"/>
     <mapping resource="model/mapping/Genres.hbm.xml"/>
-    <mapping resource="model/mapping/Movies.hbm.xml"/>    
+    <mapping resource="model/mapping/Movies.hbm.xml"/>
     <mapping resource="model/mapping/MoviesBuy.hbm.xml"/>
     <mapping resource="model/mapping/MoviesRent.hbm.xml"/>
-    
+    <mapping resource="model/mapping/Orders.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

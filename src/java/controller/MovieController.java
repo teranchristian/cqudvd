@@ -210,30 +210,31 @@ public class MovieController extends ActionSupport implements ServletRequestAwar
         GenresDAO g = new GenresDaoImpl();
         listGenre = g.list();
         if (movieId != 0) {
-            try {
-                String filePath = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");
-                String buildPath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");
-
-                File fileToCreateBuild = new File(buildPath, movieId + ".png");
-                if (fileToCreateBuild.exists()) {
-                    fileToCreateBuild.delete();
-                }
-
-                File fileToCreate = new File(filePath, movieId + ".png");
-                if (fileToCreate.exists()) {
-                    fileToCreate.delete();
-                }
-
-                System.out.println("\n\nthe path is \n" + fileToCreateBuild);
-                FileUtils.copyFile(this.userImage, fileToCreate);
-                FileUtils.copyFile(this.userImage, fileToCreateBuild);
-                return "success";
-            } catch (Exception e) {
-                e.printStackTrace();
-                addActionError(e.getMessage());
-                msg = "Somethings goes worng, please try it again";
-                return "fail";
-            }
+//            try {
+//                String filePath = servletRequest.getSession().getServletContext().getRealPath("../../web/public/moviepic");
+//                String buildPath = servletRequest.getSession().getServletContext().getRealPath("/public/moviepic");
+//
+//                File fileToCreateBuild = new File(buildPath, movieId + ".png");
+//                if (fileToCreateBuild.exists()) {
+//                    fileToCreateBuild.delete();
+//                }
+//
+//                File fileToCreate = new File(filePath, movieId + ".png");
+//                if (fileToCreate.exists()) {
+//                    fileToCreate.delete();
+//                }
+//
+//                System.out.println("\n\nthe path is \n" + fileToCreateBuild);
+//                FileUtils.copyFile(this.userImage, fileToCreate);
+//                FileUtils.copyFile(this.userImage, fileToCreateBuild);
+//                return "success";
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                addActionError(e.getMessage());
+//                msg = "Somethings goes worng, please try it again";
+//                return "fail";
+//            }
+            return "success";
         } else {
             msg = "Somethings goes worng, please try it again";
             return "fail";

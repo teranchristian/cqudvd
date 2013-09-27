@@ -6,11 +6,12 @@
                 "movie.movieTitle": {
                     required: true 
                 },
-                "movie.releaseYear": {
+                "movieBuy.price": {
                     required: true 
                 },
-                "movie.description": {
-                    required: true 
+                "movieBuy.stock": {
+                    required: true,
+                    digits: true
                 }
             },
             highlight: function(element) {
@@ -66,7 +67,11 @@
                         <div class="control-group">
                             <label for="movieBuy.price" class="control-label lblinput">Price :   </label>
                             <div class="controls pull-right">
-                            <s:textfield  name="movieBuy.price" maxlength="50" size="30"/>
+                                <div class="input-prepend input-append">
+                                <span class="add-on">$</span>
+                                <s:textfield  name="movieBuy.price" maxlength="4" size="4" style="width:180px;"/>
+                                </div> 
+                            
                             </div>
                         </div>
                     </td>
