@@ -304,39 +304,6 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         return "success";
 
     }
-
-    public String checkout() {
-       String asd = "1";
-       
-//        UserController ucont = new UserController();
-//        Map<String, Object> session = ucont.getsession();
-//      String id= session.get("userId").toString();
-//      String name= session.get("userDescr").toString();
-      
-        for (Cookie t : servletRequest.getCookies()) {
-            if (t.getName().startsWith("b")) {
-                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
-                //movieBuy;
-                MoviesRent mr= new MoviesRent();
-                mr.setMovieRentId(0);
-                order.setMovieBuy(movieBuy);
-                order.setMovieRent(mr);
-                order.setPrice(movieBuy.getPrice());
-                
-                String orderno = moviesDAO.insertOrder(userId, order);
-                     
-                
-                
-            }
-            if (t.getName().startsWith("r")) {
-                movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
-                //movieRent;
-                
-            }
-        }
-        return "success";
-
-    }
     
     
     protected HttpServletResponse servletResponse;
