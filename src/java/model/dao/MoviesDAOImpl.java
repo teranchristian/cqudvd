@@ -349,7 +349,7 @@ public class MoviesDAOImpl implements MoviesDAO {
     
 
     @Override
-    public String insertOrder(String userID, Orders order) {
+    public String insertOrder( Orders order) {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             transaction = session.beginTransaction();

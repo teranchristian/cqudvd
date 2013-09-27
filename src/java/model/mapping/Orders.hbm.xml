@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/09/2013 12:53:32 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 27/09/2013 11:53:52 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
   <class name="model.entities.Orders" schema="CQU" table="ORDERS">
     <id name="ordersId" type="int">
       <column name="ORDERS_ID"/>
       <generator class="identity"/>
     </id>
-    <property name="price" type="java.lang.Double">
-      <column name="PRICE"/>
+    <property name="type" type="string">
+      <column length="1" name="TYPE"/>
     </property>
-    <many-to-one name="user" class="model.entities.Users" column="USER_ID" cascade="all" unique="false" insert="false" update="false" />
-    <many-to-one cascade="all" name="movieBuy" class="model.entities.MoviesBuy" column="MOVIES_BUY_ID"  unique="false" />
-    <many-to-one cascade="all" name="movieRent" class="model.entities.MoviesRent" column="MOVIES_RENT_ID" unique="false"/>
+    <property name="typeId" type="java.lang.Integer">
+      <column name="TYPE_ID"/>
+    </property>
+    <property name="date" type="date" insert="false" update="false">
+      <column length="10" name="DATE"/>
+    </property>
+    <property name="userId" type="java.lang.Integer">
+      <column name="USER_ID"/>
+    </property>
+    <property name="price" type="java.lang.Double">
+      <column name="PRICE" precision="52" scale="0"/>
+    </property>
+    <many-to-one name="movie" class="model.entities.Movies" column="MOVIES_ID" cascade="all" unique="true"  />
   </class>
 </hibernate-mapping>

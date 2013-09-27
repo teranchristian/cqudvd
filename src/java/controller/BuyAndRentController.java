@@ -29,7 +29,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author cardven
  */
-public class BuyAndRentController extends ActionSupport implements ServletResponseAware, ServletRequestAware,SessionAware {
+public class BuyAndRentController extends ActionSupport implements ServletResponseAware, ServletRequestAware, SessionAware {
 
     private MoviesDAO moviesDAO = new MoviesDAOImpl();
     ArrayList<MoviesBuy> list = new ArrayList();
@@ -269,7 +269,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         for (Cookie c : servletRequest.getCookies()) {
             if ((c.getName().startsWith(movieType)) && (c.getValue().equals(itemId)) && delete == false) {
                 //total++;   
-                
+
                 c.setMaxAge(0);
                 servletResponse.addCookie(c);
                 delete = true;
@@ -290,10 +290,10 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     }
 
     public String viewCart() {
-        String id = session.get("userId").toString();
-         for(Cookie t : servletRequest.getCookies()) {
-            if ( t.getName().startsWith("b")){
-                movieBuy=moviesDAO.editBuyDetailByMovieId(t.getValue());
+
+        for (Cookie t : servletRequest.getCookies()) {
+            if (t.getName().startsWith("b")) {
+                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
                 list.add(movieBuy);
             }
             if (t.getName().startsWith("r")) {
@@ -304,8 +304,33 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         return "success";
 
     }
-    
-    
+
+    public String checkout() {
+        String id = session.get("userId").toString();
+        
+        for (Cookie t : servletRequest.getCookies()) {
+            Orders or = new Orders();
+            or.setUserId(Integer.parseInt(id));
+            if (t.getName().startsWith("b")) {
+                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
+                or.setMovie(movieBuy.getMovie());
+                or.setType("b");
+                or.setTypeId(movieBuy.getMoviesBuyId());
+                or.setPrice(movieBuy.getPrice());
+                moviesDAO.insertOrder(or);
+                //list.add(movieBuy);
+            }
+            if (t.getName().startsWith("r")) {
+                movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
+                or.setMovie(movieRent.getMovie());
+                or.setType("r");
+                or.setTypeId(movieRent.getMovieRentId());
+                or.setPrice(movieRent.getPrice());
+                moviesDAO.insertOrder(or);
+            }
+        }
+        return "success";
+    }
     protected HttpServletResponse servletResponse;
 
     @Override

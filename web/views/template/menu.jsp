@@ -21,7 +21,7 @@
             <div class="menuSearch">
                 <div class="span12 ">
                     <div class="content-center " style="padding-top: 10px;">
-                        <form class="bs-docs-example" method="post" action="searchMovie">
+                        <form class="bs-docs-example" method="post" action="${pageContext.request.contextPath}/searchMovie">
                             <div class="input-append">
                                 <input name="searchInput"  id="searchInput" type="text" class="span4" placeholder="Search">
                                 <div class="btn-group">                                    

@@ -42,7 +42,7 @@ public interface MoviesDAO {
     public ArrayList<Movies> searchYear(String search);
     
     public ArrayList<Movies> listViewCart(List<Integer> sessionList);
-    public String insertOrder(String userID, Orders order);
+    public String insertOrder(Orders order);
     
     
 }
