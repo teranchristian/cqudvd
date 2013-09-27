@@ -313,11 +313,9 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
             or.setUserId(Integer.parseInt(id));
             if (t.getName().startsWith("b")) {
                 movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
-                
                 int Stock = movieBuy.getStock()-1;
                 movieBuy.setStock(Stock);
                 int movieTypeId = moviesDAO.updateBuy(movieBuy);
-                
                 or.setMovie(movieBuy.getMovie());
                 or.setType("b");
                 or.setTypeId(movieBuy.getMoviesBuyId());
@@ -331,6 +329,13 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                 or.setType("r");
                 or.setTypeId(movieRent.getMovieRentId());
                 or.setPrice(movieRent.getPrice());
+                
+                int rStock = movieRent.getStock()-1;
+                int unitRented = movieRent.getRented()+1;
+                movieRent.setStock(rStock);
+                movieRent.setRented(unitRented);
+                moviesDAO.updateRentList(movieRent);
+                
                 moviesDAO.insertOrder(or);
             }
         }
