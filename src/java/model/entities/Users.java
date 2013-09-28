@@ -15,9 +15,15 @@ public class Users implements java.io.Serializable {
     private Login login;
     private Roles role;
 
+    /*
+     * Default constractor
+     */
     public Users() {
     }
 
+    /*
+     * Constractor with param
+     */
     public Users(String firstName, String lastName, String phoneNumber, String address, String active, Login login, Roles role) {
 
         this.firstName = firstName;
@@ -29,6 +35,9 @@ public class Users implements java.io.Serializable {
         this.role = role;
     }
 
+    /*
+     * Getter and Setter
+     */
     public String getActive() {
         return active;
     }
