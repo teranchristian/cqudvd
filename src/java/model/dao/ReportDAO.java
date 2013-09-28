@@ -5,9 +5,6 @@
 package model.dao;
 
 
-import model.entities.Movies;
-import model.entities.MoviesBuy;
-import model.entities.MoviesRent;
 /**
  *
  * @author Admin
@@ -20,5 +17,10 @@ public interface ReportDAO {
     public Long totRentDVD();
     public Long totRentedDVD();
     public Long totDVDStock();
-    
+    public Long movieSold();
+    public Long dvdSold();
+    public Long movieRented();
+    public Long dvdRented();
+    public double soldAmount();
+    public double rentAmount();
 }

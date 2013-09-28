@@ -191,5 +191,8 @@
         <action name="stockReport" class="controller.ReportController" method="stockReport" >
             <result name="success" type="tiles">stockReport</result>
         </action>
+        <action name="salesReport" class="controller.ReportController" method="salesReport" >
+            <result name="success" type="tiles">salesReport</result>
+        </action>
     </package>
 </struts>
