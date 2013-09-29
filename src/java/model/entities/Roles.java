@@ -9,14 +9,23 @@ public class Roles implements java.io.Serializable {
     private int roleId;
     private String roleType;
 
+    /*
+     * Default constractor
+     */
     public Roles() {
     }
-
+    
+    /*
+     * Constractor with param
+     */
     public Roles(int roleId, String roleType) {
         this.roleId = roleId;
         this.roleType = roleType;
     }
 
+    /*
+     * Getter and Setter
+     */
     public int getRoleId() {
         return this.roleId;
     }

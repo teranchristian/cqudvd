@@ -31,7 +31,7 @@
                     <table  nowrap align="center" border="0" cellpadding="3" cellspacing="3">   
                         <tr>
                             <td align="center"  >
-                            <s:label value="%{msg}" ></s:label>                        
+                            <s:label value="%{confirmation}" ></s:label>                        
                             </td>
                         </tr>
                     </table>            

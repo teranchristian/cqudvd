@@ -13,14 +13,23 @@ public class shoppingCart {
     private int movieId;
     private String movieType;
 
+    /*
+     * Default constractor
+     */
     public shoppingCart() {
     }
 
+    /*
+     * Constractor with param
+     */
     public shoppingCart(int movieId, String movieType) {
         this.movieId = movieId;
         this.movieType = movieType;
     }
 
+    /*
+     * Getter and Setter
+     */
     public int getMovieId() {
         return movieId;
     }

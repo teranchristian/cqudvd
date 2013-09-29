@@ -61,6 +61,55 @@ public class ReportDAOImpl implements ReportDAO{
         value = this.totBuyDVD() + this.totRentDVD();
         return value;
     }
+
+    @Override
+    public Long movieSold() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Long value = (Long) session.createQuery("Select count(distinct m) from Orders as o left join o.movie as m where type='b'").uniqueResult();
+        return value;
+    }
+
+    @Override
+    public Long dvdSold() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Long value = (Long) session.createQuery("Select count(m) from Orders as o left join o.movie as m where type='b'").uniqueResult();
+        return value;
+    }
+
+    @Override
+    public Long movieRented() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Long value = (Long) session.createQuery("Select count(distinct m) from Orders as o left join o.movie as m where type='r'").uniqueResult();
+        return value;
+    }
+
+    @Override
+    public Long dvdRented() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Long value = (Long) session.createQuery("Select count(m) from Orders as o left join o.movie as m where type='r'").uniqueResult();
+        return value;
+    }
+
+    @Override
+    public double soldAmount() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        double value = (Double) session.createQuery("Select sum(price) from Orders as o where type='b'").uniqueResult();
+        return value;
+    }
+
+    @Override
+    public double rentAmount() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        double value = (Double) session.createQuery("Select sum(price) from Orders as o where type='r'").uniqueResult();
+        return value;
+    }
+
 }
 
    

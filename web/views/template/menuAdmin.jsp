@@ -46,7 +46,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/reports/stockReport">Stock Report</a></li>
                                     <li class="divider"></li>
-                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/reports/#">Sales Report</a></li>
+                                    <li><a tabindex="-1" href="${pageContext.request.contextPath}/admin/reports/salesReport">Sales Report</a></li>
                                     <li class="divider"></li>
                                 </ul>
                             </li>

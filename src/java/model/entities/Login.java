@@ -11,9 +11,15 @@ public class Login implements java.io.Serializable {
     private String password;
     private String userKey;
 
+    /*
+     * Default constractor
+     */
     public Login() {
     }
 
+    /*
+     * Constractor with param
+     */
     public Login(String email, String password, String userKey) {
 
         this.email = email;
@@ -21,6 +27,9 @@ public class Login implements java.io.Serializable {
         this.userKey = userKey;
     }
 
+    /*
+     * Getter and Setter
+     */
     public int getLoginId() {
         return this.loginId;
     }
