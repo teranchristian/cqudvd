@@ -39,6 +39,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     String msg;
     String movieType;
     String userId;
+    String confirmation;
     private MoviesBuy movieBuy = new MoviesBuy();
     private MoviesRent movieRent = new MoviesRent();
     private ArrayList<Movies> listForBuy = new ArrayList();
@@ -46,6 +47,15 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     private Movies movie = new Movies();
     private Map<String, Object> session;
 
+    public String getConfirmation() {
+        return confirmation;
+    }
+
+    public void setConfirmation(String confirmation) {
+        this.confirmation = confirmation;
+    }
+
+    
     public ArrayList<MoviesRent> getListRent() {
         return listRent;
     }
@@ -307,7 +317,7 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
 
     public String checkout() {
         String id = session.get("userId").toString();
-        
+        StringBuilder  confirmationNumber = new StringBuilder();
         for (Cookie t : servletRequest.getCookies()) {
             Orders or = new Orders();
             or.setUserId(Integer.parseInt(id));
@@ -317,7 +327,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                 or.setType("b");
                 or.setTypeId(movieBuy.getMoviesBuyId());
                 or.setPrice(movieBuy.getPrice());
-                moviesDAO.insertOrder(or);
+                int Id = moviesDAO.insertOrder(or);
+                confirmationNumber.append(Id+"-");
                 //list.add(movieBuy);
             }
             if (t.getName().startsWith("r")) {
@@ -326,7 +337,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                 or.setType("r");
                 or.setTypeId(movieRent.getMovieRentId());
                 or.setPrice(movieRent.getPrice());
-                moviesDAO.insertOrder(or);
+                int Id=moviesDAO.insertOrder(or);
+                confirmationNumber.append(Id+"-");
             }
         }
         return "success";
