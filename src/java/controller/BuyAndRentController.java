@@ -340,11 +340,6 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                 or.setType("r");
                 or.setTypeId(movieRent.getMovieRentId());
                 or.setPrice(movieRent.getPrice());
-//<<<<<<< HEAD
-                int Id=moviesDAO.insertOrder(or);
-                confirmationNumber.append(Id+"-");
-//
-
                 
                 int rStock = movieRent.getStock()-1;
                 int unitRented = movieRent.getRented()+1;
