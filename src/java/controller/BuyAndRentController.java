@@ -343,7 +343,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
 //<<<<<<< HEAD
                 int Id=moviesDAO.insertOrder(or);
                 confirmationNumber.append(Id+"-");
-//=======
+//
+
                 
                 int rStock = movieRent.getStock()-1;
                 int unitRented = movieRent.getRented()+1;
@@ -352,7 +353,6 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                 moviesDAO.updateRentList(movieRent);
                 
                 moviesDAO.insertOrder(or);
-//>>>>>>> branch 'master' of https://github.com/teranchristian/cqudvd.git
             }
         }
         return "success";
