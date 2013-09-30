@@ -60,7 +60,7 @@
                     <a href="#">Security</a>
                 </div>
                 <div class="span4">
-                    <p class="muted pull-right">&copy; 2013 Company Name. All rights reserved</p>
+                    <p class="muted pull-right">&copy; 2013 CQUDVD. All rights reserved</p>
                 </div>
             </div>
         </div>

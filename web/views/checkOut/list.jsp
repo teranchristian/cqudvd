@@ -121,7 +121,7 @@
                     <s:if test="%{#session['userId']!= null}">    
                         <s:hidden  name="userId" value="%{#session['userId']}"/>
                     </s:if>
-                    <input type="button" class="pull-left btn-danger btn-large" value="Clear Cart"/><a href="${pageContext.request.contextPath}/user/checkout"><button  class="pull-right btn-warning btn-large" ><i class="icon-lock icon-white"></i> CHECKOUT</button></a>
+                    <a href="${pageContext.request.contextPath}/user/checkout"><button  class="pull-right btn-warning btn-large" ><i class="icon-lock icon-white"></i> CHECKOUT</button></a>
             <br/><p/><p/><br/>
         </div>
     </div>

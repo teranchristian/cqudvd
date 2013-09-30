@@ -47,11 +47,11 @@
                 <div class="span12 ">
                     <div class="menuOption" style="">
                         <ul id="nav">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Our Products</a></li>
-                            <li><a href="#">FAQs</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="${pageContext.request.contextPath}">Home</a></li>
+                            <li><a href="${pageContext.request.contextPath}">Our Products</a></li>
+                            <li><a href="${pageContext.request.contextPath}">FAQs</a></li>
+                            <li><a href="${pageContext.request.contextPath}">Contact</a></li>
+                            <li><a href="${pageContext.request.contextPath}">Login</a></li>
                         </ul>
                     </div>
                 </div>

@@ -319,6 +319,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         try {
             String id = session.get("userId").toString();
             String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+             StringBuilder  confirmationNumber = new StringBuilder();
+        confirmationNumber.append("CQU");
             for (Cookie t : servletRequest.getCookies()) {
                 Orders or = new Orders();
                 or.setUserId(Integer.parseInt(id));
@@ -333,9 +335,8 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                     or.setTypeId(movieBuy.getMoviesBuyId());
                     or.setPrice(movieBuy.getPrice());
                     
-                    moviesDAO.insertOrder(or);
-                    t.setMaxAge(0);
-                    servletResponse.addCookie(t);
+                   int Id= moviesDAO.insertOrder(or);
+                   confirmationNumber.append(Id+"-"); 
                     //list.add(movieBuy);
                 }
                 if (t.getName().startsWith("r")) {
@@ -349,14 +350,23 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
                     movieRent.setStock(rStock);
                     movieRent.setRented(unitRented);
                     moviesDAO.updateRentList(movieRent);
-                    moviesDAO.insertOrder(or);
+                    int Id =moviesDAO.insertOrder(or);
+                    confirmationNumber.append(Id+"-"); 
                     
-                    t.setMaxAge(0);
-                    servletResponse.addCookie(t);
                 }
                 
             }
-            msg = id+"-"+timeStamp;
+            
+            Cookie[] cookies = servletRequest.getCookies();
+       if (cookies != null)
+        for (int i = 0; i < cookies.length; i++) {
+            cookies[i].setValue(null);
+            cookies[i].setPath("/cqu");
+            cookies[i].setMaxAge(0);
+            servletResponse.addCookie(cookies[i]);
+        }
+       
+            msg = confirmationNumber.toString();
             return "success";
         } catch (Exception e) {
             return "fail";
