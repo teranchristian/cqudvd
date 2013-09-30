@@ -91,6 +91,8 @@
         </action>
         <action name="checkout" class="controller.BuyAndRentController" method="checkout" >
             <result name="success" type="tiles">payment</result>
+            <result name="fail" type="tiles">login</result>
+            
         </action>
     </package>
     

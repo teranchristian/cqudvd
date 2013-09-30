@@ -17,7 +17,7 @@
                     </td>
                 </tr>
             </table>
-        <s:form action="validate" method="post" >
+        <form action="${pageContext.request.contextPath}/validate" method="post" >
             <table  class=""  nowrap align="center" border="0" cellpadding="3" cellspacing="3"  width="25%">       
                 <tr>
                     <td colspan="2">     
@@ -47,6 +47,6 @@
                     </td>					
                 </tr>						
             </table>	
-        </s:form>
+        </form>
     </div> 
 </div>

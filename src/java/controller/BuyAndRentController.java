@@ -7,6 +7,7 @@ package controller;
 import com.opensymphony.xwork2.ActionSupport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +56,6 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
         this.confirmation = confirmation;
     }
 
-    
     public ArrayList<MoviesRent> getListRent() {
         return listRent;
     }
@@ -316,41 +316,51 @@ public class BuyAndRentController extends ActionSupport implements ServletRespon
     }
 
     public String checkout() {
-        String id = session.get("userId").toString();
-        StringBuilder  confirmationNumber = new StringBuilder();
-        for (Cookie t : servletRequest.getCookies()) {
-            Orders or = new Orders();
-            or.setUserId(Integer.parseInt(id));
-            if (t.getName().startsWith("b")) {
-                movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
-                int Stock = movieBuy.getStock()-1;
-                movieBuy.setStock(Stock);
-                int movieTypeId = moviesDAO.updateBuy(movieBuy);
-                or.setMovie(movieBuy.getMovie());
-                or.setType("b");
-                or.setTypeId(movieBuy.getMoviesBuyId());
-                or.setPrice(movieBuy.getPrice());
-                int Id = moviesDAO.insertOrder(or);
-                confirmationNumber.append(Id+"-");
-                //list.add(movieBuy);
-            }
-            if (t.getName().startsWith("r")) {
-                movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
-                or.setMovie(movieRent.getMovie());
-                or.setType("r");
-                or.setTypeId(movieRent.getMovieRentId());
-                or.setPrice(movieRent.getPrice());
+        try {
+            String id = session.get("userId").toString();
+            String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+            for (Cookie t : servletRequest.getCookies()) {
+                Orders or = new Orders();
+                or.setUserId(Integer.parseInt(id));
+                or.setCode(id+"-"+timeStamp);
+                if (t.getName().startsWith("b")) {
+                    movieBuy = moviesDAO.editBuyDetailByMovieId(t.getValue());
+                    int Stock = movieBuy.getStock() - 1;
+                    movieBuy.setStock(Stock);
+                    int movieTypeId = moviesDAO.updateBuy(movieBuy);
+                    or.setMovie(movieBuy.getMovie());
+                    or.setType("b");
+                    or.setTypeId(movieBuy.getMoviesBuyId());
+                    or.setPrice(movieBuy.getPrice());
+                    
+                    moviesDAO.insertOrder(or);
+                    t.setMaxAge(0);
+                    servletResponse.addCookie(t);
+                    //list.add(movieBuy);
+                }
+                if (t.getName().startsWith("r")) {
+                    movieRent = moviesDAO.editRentDetailByMovieId(t.getValue());
+                    or.setMovie(movieRent.getMovie());
+                    or.setType("r");
+                    or.setTypeId(movieRent.getMovieRentId());
+                    or.setPrice(movieRent.getPrice());
+                    int rStock = movieRent.getStock() - 1;
+                    int unitRented = movieRent.getRented() + 1;
+                    movieRent.setStock(rStock);
+                    movieRent.setRented(unitRented);
+                    moviesDAO.updateRentList(movieRent);
+                    moviesDAO.insertOrder(or);
+                    
+                    t.setMaxAge(0);
+                    servletResponse.addCookie(t);
+                }
                 
-                int rStock = movieRent.getStock()-1;
-                int unitRented = movieRent.getRented()+1;
-                movieRent.setStock(rStock);
-                movieRent.setRented(unitRented);
-                moviesDAO.updateRentList(movieRent);
-                
-                moviesDAO.insertOrder(or);
             }
+            msg = id+"-"+timeStamp;
+            return "success";
+        } catch (Exception e) {
+            return "fail";
         }
-        return "success";
     }
     protected HttpServletResponse servletResponse;
 

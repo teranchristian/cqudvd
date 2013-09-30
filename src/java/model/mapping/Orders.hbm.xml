@@ -19,6 +19,9 @@
     <property name="userId" type="java.lang.Integer">
       <column name="USER_ID"/>
     </property>
+     <property name="code"  type="string">
+      <column length="50" name="CODE"/>
+    </property>
     <property name="price" type="java.lang.Double">
       <column name="PRICE" precision="52" scale="0"/>
     </property>

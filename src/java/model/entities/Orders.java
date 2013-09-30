@@ -11,6 +11,7 @@ public class Orders implements java.io.Serializable {
     private int ordersId;
     private Movies movie;
     private String type;
+    private String code;
     private Integer typeId;
     private Date date;
     private Integer userId;
@@ -32,10 +33,11 @@ public class Orders implements java.io.Serializable {
     /*
      * Constractor with param
      */
-    public Orders(int ordersId, Movies movie, String type, Integer typeId, Date date, Integer userId, Double price) {
+    public Orders(int ordersId, Movies movie, String type,String code, Integer typeId, Date date, Integer userId, Double price) {
         this.ordersId = ordersId;
         this.movie = movie;
         this.type = type;
+        this.code = code;
         this.typeId = typeId;
         this.date = date;
         this.userId = userId;
@@ -45,6 +47,15 @@ public class Orders implements java.io.Serializable {
     /*
      * Getter and Setter
      */
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+    
+    
     public int getOrdersId() {
         return this.ordersId;
     }
